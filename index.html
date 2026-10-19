@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0b1020">
+<title>For My Love 💙</title>
+<style>
+  :root{
+    --silver:#c0c4cc; --blue:#2f6bff; --red:#e63946; --bg:#070a14;
+    --card:#101627; --text:#eef1f7; --muted:#9aa4bf; --gold:#ffd166;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;height:100%}
+  body{
+    background:radial-gradient(1200px 800px at 50% -10%, #14204a 0%, var(--bg) 60%);
+    color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    overflow:hidden;
+  }
+  #app{height:100%;display:flex;flex-direction:column;position:relative}
+  .page{
+    position:absolute;inset:0;padding:22px 18px 110px;
+    overflow-y:auto;opacity:0;transform:translateY(24px) scale(.98);
+    transition:opacity .55s ease,transform .55s ease;pointer-events:none;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .page.active{opacity:1;transform:none;pointer-events:auto;z-index:2}
+  h1,h2{font-weight:800;letter-spacing:-.5px;margin:.2em 0 .4em;text-align:center}
+  h1{font-size:2rem;background:linear-gradient(90deg,var(--silver),var(--blue),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h2{font-size:1.4rem}
+  p{line-height:1.55;text-align:center;color:var(--text);margin:.4em 0}
+  .muted{color:var(--muted);font-size:.92rem}
+  .card{
+    width:100%;max-width:460px;background:linear-gradient(180deg,#121a30,#0e1424);
+    border:1px solid #1e2942;border-radius:22px;padding:20px;margin:12px 0;
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;max-width:460px;padding:16px 20px;margin:8px 0;
+    border:none;border-radius:16px;font-size:1.05rem;font-weight:700;
+    background:linear-gradient(135deg,var(--blue),#7a4dff);color:#fff;
+    cursor:pointer;transition:transform .15s,box-shadow .2s;
+    box-shadow:0 10px 24px rgba(47,107,255,.35);
+  }
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
+  .btn.silver{background:linear-gradient(135deg,var(--silver),#8f97a8);color:#0b1020}
+  .btn.red{background:linear-gradient(135deg,var(--red),#ff7b8a)}
+  .btn.gold{background:linear-gradient(135deg,var(--gold),#f0a500);color:#0b1020}
+  .btn.ghost{background:transparent;border:1px solid #2a3655;color:var(--text);box-shadow:none}
+  .btn.small{max-width:none;width:auto;padding:10px 16px;font-size:.92rem}
+  .btn.big{font-size:1.3rem;padding:22px;border-radius:22px}
+  .row{display:flex;gap:10px;width:100%;max-width:460px}
+  .row .btn{margin:8px 0}
+  label.opt{
+    display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px;margin:8px 0;
+    background:#0f1730;border:1px solid #1e2942;border-radius:14px;cursor:pointer;
+    transition:border-color .2s,background .2s;
+  }
+  label.opt:active{background:#142048}
+  label.opt input{margin-top:4px;accent-color:var(--blue);width:20px;height:20px;flex:0 0 auto}
+  label.opt.checked{border-color:var(--blue);background:#15224a}
+  .toast{
+    position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);
+    background:#1b2748;color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transition:.3s;z-index:999;max-width:90%;
+    text-align:center;font-size:.95rem;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--silver),var(--blue),var(--red));width:0;transition:width .4s;z-index:50;border-radius:0 4px 4px 0}
+  .hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .heart{position:absolute;font-size:18px;animation:float linear forwards;opacity:.9}
+  @keyframes float{from{transform:translateY(0) scale(1);opacity:.9}to{transform:translateY(-110vh) scale(1.4);opacity:0}}
+  #fw{position:fixed;inset:0;pointer-events:none;z-index:40}
+  .media-preview{width:100%;border-radius:16px;margin-top:12px;background:#000;max-height:340px;object-fit:cover}
+  .hide{display:none!important}
+  .center{display:flex;flex-direction:column;align-items:center;width:100%}
+  .timer{font-size:3.4rem;font-weight:900;color:var(--red);text-align:center;margin:10px}
+  .promise{
+    opacity:0;transform:translateY(12px);transition:.6s;padding:14px 16px;margin:8px 0;
+    background:#0f1730;border:1px solid #1e2942;border-radius:14px;text-align:center;font-weight:600;
+    width:100%;max-width:440px;line-height:1.5;
+  }
+  .promise.show{opacity:1;transform:none;border-color:var(--blue)}
+  .badge{font-size:.78rem;color:var(--muted);border:1px solid #2a3655;padding:3px 9px;border-radius:999px}
+  .quote{font-style:italic;color:var(--silver)}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;max-width:460px;margin-top:12px}
+  .gallery img,.gallery video{width:100%;height:140px;object-fit:cover;border-radius:12px;background:#000}
+  .big-emoji{font-size:3rem;text-align:center;margin:6px 0}
+  .runaway{position:absolute;transition:left .25s ease,top .25s ease;z-index:5}
+  .surprise-box{
+    width:100%;max-width:460px;padding:36px 20px;margin:14px 0;border-radius:22px;
+    background:linear-gradient(135deg,#2a1a3a,#1a0f2a);border:2px dashed #7a4dff;
+    text-align:center;cursor:pointer;transition:transform .2s;
+    box-shadow:0 0 40px rgba(122,77,255,.35);
+  }
+  .surprise-box:active{transform:scale(.97)}
+  .surprise-box .gift{font-size:3.5rem;display:inline-block;animation:wiggle 1.8s infinite}
+  @keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+  .yes-wrap{position:relative;width:100%;max-width:460px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .yes-big{
+    width:100%;padding:36px 20px;font-size:1.6rem;font-weight:900;
+    border:none;border-radius:24px;cursor:pointer;
+    background:linear-gradient(135deg,var(--blue),#7a4dff);color:#fff;
+    box-shadow:0 20px 50px rgba(47,107,255,.55);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+  .no-tiny{
+    position:absolute;padding:6px 12px;font-size:.75rem;border-radius:10px;
+    background:#1a1a2a;color:#8a8aa0;border:1px solid #2a2a40;cursor:pointer;
+    transition:left .3s ease,top .3s ease;
+  }
+  .music-note{position:fixed;bottom:20px;left:20px;font-size:1.6rem;z-index:60;cursor:pointer;animation:wiggle 2s infinite}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="hearts" id="hearts"></div>
+<div class="toast" id="toast"></div>
+<canvas id="fw"></canvas>
+<div class="music-note hide" id="musicToggle" title="Toggle music">🎵</div>
+
+<div id="app">
+
+  <!-- ============ WELCOME ============ -->
+  <section class="page active" id="p-welcome">
+    <div class="center" style="margin-top:6vh">
+      <div class="big-emoji">💙🎂💫</div>
+      <h1>Happy Birthday,<br><span id="herName">My Love</span> 💖</h1>
+      <p class="muted" style="max-width:380px">
+        You opened this on the morning of the 24th — and I've been thinking about this moment for weeks.
+      </p>
+      <p class="muted" style="max-width:380px">
+        There's music. There are rules. There's a quiz you cannot fail. There are cameras that will ask permission — say yes, it's just me. 😌
+      </p>
+      <p class="quote" style="max-width:380px">“Every love story is beautiful, but ours is my favourite.”</p>
+      <p class="muted" style="font-size:.82rem;max-width:360px">🎧 Turn sound on • 📷 Allow camera when asked • 🔒 Nothing you record leaves your phone</p>
+      <button class="btn" id="startBtn">Begin our story 💌</button>
+    </div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="page" id="p-rules">
+    <div class="center">
+      <span class="badge">Section 1 of 10</span>
+      <h2>📜 The Official Birthday Rules</h2>
+      <p class="muted">You must tick ALL six. No excuses. 😌</p>
+      <div class="card" id="rulesCard"></div>
+      <button class="btn" id="acceptRules" disabled>Tick all six first 🙈</button>
+      <div id="penaltyBox" class="hide" style="width:100%;max-width:460px">
+        <p class="muted">You tried to decline? Cute. Choose your penalty 👇</p>
+        <label class="opt"><input type="radio" name="penalty" value="Forehead kisses 😘"><span>Forehead kisses 😘</span></label>
+        <label class="opt"><input type="radio" name="penalty" value="Dinner date 🍝"><span>Dinner date 🍝</span></label>
+        <label class="opt"><input type="radio" name="penalty" value="Both 😏"><span>Both — you signed up for this 😏</span></label>
+        <button class="btn red" id="penaltyDone" disabled>Submit penalty</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOVE QUIZ ============ -->
+  <section class="page" id="p-quiz">
+    <div class="center">
+      <span class="badge">Section 2 of 10</span>
+      <h2>💘 The Love Quiz</h2>
+      <p class="muted">Every answer is correct. That's the rule. 😌</p>
+      <div class="card" id="quizCard"></div>
+      <button class="btn hide" id="quizNext">Next 💞</button>
+    </div>
+  </section>
+
+  <!-- ============ SMILE SELFIE ============ -->
+  <section class="page" id="p-selfie">
+    <div class="center">
+      <span class="badge">Section 3 of 10</span>
+      <h2>😄 Smile Selfie</h2>
+      <p class="muted">3… 2… 1… show me that smile.</p>
+      <div id="selfieTimer" class="timer hide">3</div>
+      <video id="selfieVideo" class="media-preview hide" autoplay playsinline muted></video>
+      <canvas id="selfieCanvas" class="hide"></canvas>
+      <img id="selfieShot" class="media-preview hide" alt="selfie">
+      <div class="row">
+        <button class="btn" id="selfieStart">Start countdown 📸</button>
+        <button class="btn silver hide" id="selfieRetake">Retake</button>
+      </div>
+      <button class="btn ghost hide" id="selfieNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ VOICE NOTE ============ -->
+  <section class="page" id="p-voice">
+    <div class="center">
+      <span class="badge">Section 4 of 10</span>
+      <h2>🎤 Your Voice, My Favourite Sound</h2>
+      <p class="muted">Up to 30 seconds. Say anything — or just laugh.</p>
+      <div id="voiceTimer" class="timer">30</div>
+      <div class="row">
+        <button class="btn" id="voiceStart">Record 🎙️</button>
+        <button class="btn red hide" id="voiceStop">Stop ⏹️</button>
+      </div>
+      <audio id="voicePlayback" class="hide" controls style="width:100%;max-width:460px;margin-top:12px"></audio>
+      <button class="btn ghost hide" id="voiceNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ DANCE VIDEO ============ -->
+  <section class="page" id="p-dance">
+    <div class="center">
+      <span class="badge">Section 5 of 10</span>
+      <h2>💃 15-Second Dance</h2>
+      <p class="muted">Show me your moves. No judgement. Only love.</p>
+      <div id="danceTimer" class="timer hide">15</div>
+      <video id="dancePreview" class="media-preview hide" autoplay playsinline muted></video>
+      <video id="dancePlayback" class="media-preview hide" controls playsinline></video>
+      <div class="row">
+        <button class="btn" id="danceStart">Record 🎬</button>
+        <button class="btn red hide" id="danceStop">Stop ⏹️</button>
+      </div>
+      <button class="btn ghost hide" id="danceNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ KISS ============ -->
+  <section class="page" id="p-kiss">
+    <div class="center">
+      <span class="badge">Section 6 of 10</span>
+      <h2>💋 Come Here…</h2>
+      <p class="muted">Tap what you're feeling. Be honest. 😏</p>
+      <div class="card center" id="kissCard">
+        <button class="btn" data-mood="Give me a kiss 💋">Give me a kiss 💋</button>
+        <button class="btn red" data-mood="Come kiss me right now 🥵">Come kiss me right now 🥵</button>
+        <button class="btn silver" data-mood="Cuddles first 🥰">Cuddles first 🥰</button>
+        <button class="btn ghost" data-mood="Surprise me 😈">Surprise me 😈</button>
+      </div>
+      <div id="kissReply" class="card hide center"></div>
+      <button class="btn hide" id="kissNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ CHAPATI + DRINK REQUEST ============ -->
+  <section class="page" id="p-chapo">
+    <div class="center">
+      <span class="badge">Section 7 of 10</span>
+      <h2>🍽️ A Small Appreciation Request</h2>
+      <p class="muted">I have a humble ask, my love. 😌</p>
+
+      <div class="card">
+        <div class="big-emoji">🫓</div>
+        <p><strong>Could you make me some chapos?</strong></p>
+        <p class="muted">Soft, layered, the way only you make them. I'll handle the dishes and the compliments.</p>
+        <label class="opt"><input type="checkbox" id="chapoYes"><span>Yes, I'll make chapos 🫓💙</span></label>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">🥤</div>
+        <p><strong>And a drink — a Predator.</strong></p>
+        <p class="muted">The real one. Cold. As a thank-you to your favourite person. 😏</p>
+        <label class="opt"><input type="checkbox" id="drinkYes"><span>Yes, I'll bring the Predator 🥤</span></label>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">🎶</div>
+        <p><strong>And music for us to work to?</strong></p>
+        <p class="muted">Something to cook and clean to — your pick. I'll dance badly and you'll pretend not to notice.</p>
+        <label class="opt"><input type="checkbox" id="musicYes"><span>Yes, I'll pick the playlist 🎶</span></label>
+      </div>
+
+      <button class="btn" id="chapoNext" disabled>Tick what you'll do for me 😌</button>
+    </div>
+  </section>
+
+  <!-- ============ YES-ONLY ACCEPTANCE ============ -->
+  <section class="page" id="p-accept">
+    <div class="center">
+      <span class="badge">Section 8 of 10</span>
+      <h2>💍 One Question</h2>
+      <p class="muted" style="max-width:380px">There's really only one answer here, but I built a tiny "no" button anyway. Good luck catching it. 😏</p>
+
+      <div class="yes-wrap" id="yesWrap">
+        <button class="yes-big" id="yesBtn">YES 💙</button>
+        <button class="no-tiny" id="noBtn">no</button>
+      </div>
+
+      <div id="yesReply" class="card hide center">
+        <div class="big-emoji">💍💙</div>
+        <p style="font-weight:800;font-size:1.15rem">She said yes. 🥹</p>
+        <p class="muted">You just made this the best birthday of my life — and it's not even mine.</p>
+        <p class="muted">Now go tick the surprise box below. 😏</p>
+      </div>
+
+      <button class="btn hide" id="acceptNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ SURPRISE BOX ============ -->
+  <section class="page" id="p-surprise">
+    <div class="center">
+      <span class="badge">Section 9 of 10</span>
+      <h2>🎁 A Box I Won't Explain</h2>
+      <p class="muted">Tap it. I won't tell you what's inside. You'll have to wait. 😏</p>
+
+      <div class="surprise-box" id="surpriseBox">
+        <div class="gift">🎁</div>
+        <p style="font-weight:800;font-size:1.2rem;margin-top:10px">Tap to open</p>
+        <p class="muted" style="font-size:.85rem">I promise it's worth the wait.</p>
+      </div>
+
+      <div id="surpriseReply" class="card hide center">
+        <div class="big-emoji">✨🤫✨</div>
+        <p style="font-weight:800;font-size:1.1rem">You just unlocked a secret.</p>
+        <p class="muted">It's not here. It's coming. Be patient with me — it's on its way. 💙</p>
+        <p class="muted" style="font-size:.85rem">(Hint: it's something you can hold.)</p>
+      </div>
+
+      <button class="btn hide" id="surpriseNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- ============ PRIVACY & SAFETY ============ -->
+  <section class="page" id="p-privacy">
+    <div class="center">
+      <span class="badge">Just for you</span>
+      <h2>🔒 Your Privacy &amp; Safety</h2>
+      <p class="muted">Read this slowly. I mean every word.</p>
+
+      <div class="card">
+        <div class="big-emoji">📵</div>
+        <p><strong>Nothing leaves your phone.</strong></p>
+        <p class="muted">Your selfie, your voice, your dance — they stay on your device. No upload. No server. No one sees them but you. I built it this way on purpose.</p>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">🔒</div>
+        <p><strong>This link is yours.</strong></p>
+        <p class="muted">Don't forward it. Don't post it. It was made for one person on one morning — you.</p>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">🛡️</div>
+        <p><strong>Safety rules for us</strong></p>
+        <p class="muted" style="text-align:left;font-size:.9rem">
+          • If a day feels heavy, you tell me. No performance.<br>
+          • Your body, your rules — always, no explanation needed.<br>
+          • You never owe me a good mood, a photo, or a smile.<br>
+          • If anyone — including me — makes you feel small, you say it out loud. I'll listen.<br>
+          • I will never share anything you send me. Never.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">🔑</div>
+        <p><strong>One small ask</strong></p>
+        <p class="muted">Before you send me anything private — a photo, a voice note, a video — make sure it's something you'd be okay with <em>forever</em>. If there's any doubt, don't. I'll love you the same. That's the rule.</p>
+      </div>
+
+      <div class="card">
+        <div class="big-emoji">📱</div>
+        <p><strong>Device safety tip</strong></p>
+        <p class="muted">Lock your phone with a PIN or face ID. Keep this page private. If you ever lose your phone, tell me first — I'll help you wipe it, no questions.</p>
+      </div>
+
+      <button class="btn" id="privacyNext">I've read it. I feel safe. 💙</button>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="page" id="p-gallery">
+    <div class="center">
+      <span class="badge">Section 10 of 10</span>
+      <h2>📸 Our Little Museum</h2>
+      <p class="muted">Some of us. Some for you to add today.</p>
+      <div class="gallery" id="photoGallery"></div>
+      <div class="gallery" id="videoGallery"></div>
+
+      <div class="card center">
+        <p class="muted">Add a photo from today 📷</p>
+        <input type="file" accept="image/*" capture="environment" id="photoInput" class="hide">
+        <button class="btn small" onclick="document.getElementById('photoInput').click()">Choose photo</button>
+        <p class="muted" style="font-size:.8rem">Stored on your phone only 🔒</p>
+      </div>
+
+      <button class="btn red" id="galleryNext" style="margin-top:18px">Go to your promises 💌</button>
+    </div>
+  </section>
+
+  <!-- ============ FINALE ============ -->
+  <section class="page" id="p-finale">
+    <div class="center" style="margin-top:5vh">
+      <div class="big-emoji">🎉💖🎊</div>
+      <h1>My Promises to You</h1>
+      <p class="muted">Ten things. One heart. Always.</p>
+
+      <div class="card" style="margin-top:12px">
+        <div class="big-emoji">💌</div>
+        <p id="loveLetterText" style="white-space:pre-line;text-align:left;font-size:.95rem;line-height:1.7"></p>
+      </div>
+
+      <div id="promises"></div>
+
+      <button class="btn red hide" id="finaleBtn" style="margin-top:20px">One more thing… 💌</button>
+      <div id="finaleLove" class="card center hide" style="margin-top:20px">
+        <h2>I love you. Forever. 💙</h2>
+        <p class="quote">— Yours, always.</p>
+        <p class="muted">You can replay this any time. Happy birthday, <span class="herNameSpan">my love</span>. 🎂</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   ⚙️ CONFIG — EDIT ONLY THIS BLOCK
+   ============================================================ */
+const CONFIG = {
+  herName: "My Love",          // 👈 her real name
+  yourName: "Me",              // 👈 your name
+
+  // 🎵 MUSIC — add direct MP3 links (host on your server / R2 / S3)
+  // Leave empty [] to disable music gracefully.
+  songs: [
+    // "https://yoursite.com/song1.mp3",
+    // "https://yoursite.com/song2.mp3"
+  ],
+
+  // 📸 YOUR PHOTOS — direct image URLs
+  photos: [
+    "https://picsum.photos/seed/love1/500/500",
+    "https://picsum.photos/seed/love2/500/500",
+    "https://picsum.photos/seed/love3/500/500",
+    "https://picsum.photos/seed/love4/500/500"
+  ],
+
+  // 🎬 YOUR VIDEOS — direct video URLs (mp4)
+  videos: [
+    // "https://yoursite.com/our-video.mp4"
+  ]
+};
+/* ============================================================ */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const show = el => el && el.classList.remove('hide');
+const hide = el => el && el.classList.add('hide');
+
+/* Apply her name everywhere */
+document.getElementById('herName').textContent = CONFIG.herName;
+$$('.herNameSpan').forEach(e => e.textContent = CONFIG.herName);
+
+function toast(msg, ms=1900){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._t); t._t = setTimeout(()=>t.classList.remove('show'), ms);
+}
+function vibrate(p){ try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} }
+
+/* ---- Progress + navigation ---- */
+const pages = ['p-welcome','p-rules','p-quiz','p-selfie','p-voice','p-dance','p-kiss',
+               'p-chapo','p-accept','p-surprise','p-privacy','p-gallery','p-finale'];
+let pageIndex = 0;
+function goTo(id){
+  const i = pages.indexOf(id); if(i < 0) return;
+  $$('.page').forEach(p => p.classList.remove('active'));
+  $('#'+id).classList.add('active');
+  pageIndex = i;
+  $('#progress').style.width = ((i+1)/pages.length*100)+'%';
+  window.scrollTo(0,0);
+  vibrate(15);
+}
+
+/* ---- Floating hearts ---- */
+function spawnHearts(n=1){
+  const layer = $('#hearts');
+  for(let k=0;k<n;k++){
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = ['💙','💖','💫','❤️','🤍','✨','🫓','🥤'][Math.floor(Math.random()*8)];
+    h.style.left = (Math.random()*100)+'vw';
+    h.style.bottom = '-30px';
+    h.style.animationDuration = (5+Math.random()*5)+'s';
+    h.style.fontSize = (14+Math.random()*18)+'px';
+    layer.appendChild(h);
+    setTimeout(()=>h.remove(), 11000);
+  }
+}
+setInterval(()=>spawnHearts(1), 1200);
+
+/* ---- Confetti ---- */
+const fw = $('#fw');
+const fwCtx = fw.getContext('2d');
+let fwParts = [];
+function resizeFW(){ fw.width = innerWidth; fw.height = innerHeight; }
+resizeFW(); addEventListener('resize', resizeFW);
+function burst(x,y,n=60,colors=['#c0c4cc','#2f6bff','#e63946','#ffd166','#7a4dff']){
+  for(let i=0;i<n;i++){
+    fwParts.push({
+      x,y,
+      vx:(Math.random()-.5)*9,
+      vy:(Math.random()-.9)*10,
+      life:1,
+      c:colors[Math.floor(Math.random()*colors.length)],
+      size:2+Math.random()*4
+    });
+  }
+}
+function fwLoop(){
+  fwCtx.clearRect(0,0,fw.width,fw.height);
+  fwParts.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy; p.vy+=0.18; p.life-=0.012;
+    fwCtx.globalAlpha = Math.max(p.life,0);
+    fwCtx.fillStyle = p.c;
+    fwCtx.beginPath(); fwCtx.arc(p.x,p.y,p.size,0,7); fwCtx.fill();
+  });
+  fwParts = fwParts.filter(p=>p.life>0);
+  requestAnimationFrame(fwLoop);
+}
+fwLoop();
+function celebrate(){
+  const w=innerWidth,h=innerHeight;
+  for(let i=0;i<7;i++){
+    setTimeout(()=>burst(w*(0.15+Math.random()*0.7), h*(0.15+Math.random()*0.5), 70), i*220);
+  }
+  setTimeout(()=>burst(w/2, h*0.35, 130), 200);
+}
+
+/* ---- Music ---- */
+let audio = new Audio();
+let songIdx = 0;
+let musicOn = true;
+function playSong(){
+  if(!CONFIG.songs.length) return;
+  audio.src = CONFIG.songs[songIdx % CONFIG.songs.length];
+  audio.loop = false;
+  audio.play().catch(()=>{});
+  $('#musicToggle').classList.remove('hide');
+}
+audio.addEventListener('ended', ()=>{ songIdx++; playSong(); });
+$('#musicToggle').addEventListener('click', ()=>{
+  if(audio.paused){ audio.play().catch(()=>{}); musicOn=true; toast("Music on 🎵"); }
+  else { audio.pause(); musicOn=false; toast("Music off 🔇"); }
+});
+
+/* ============================================================
+   WELCOME → start
+   ============================================================ */
+$('#startBtn').addEventListener('click', ()=>{
+  spawnHearts(6);
+  vibrate(40);
+  playSong();
+  goTo('p-rules');
+});
+
+/* ============================================================
+   RULES
+   ============================================================ */
+const RULES = [
+  "You are the reason I smile at my phone. 😊",
+  "You will never go to bed angry at me. 😌",
+  "You will always tell me when something's wrong. 💬",
+  "You will let me spoil you at least once a week. 🎁",
+  "You will send me one random selfie per week. 📸",
+  "You will never doubt how much I love you. 💙"
+];
+const rulesCard = $('#rulesCard');
+RULES.forEach((r,i)=>{
+  const l = document.createElement('label');
+  l.className = 'opt';
+  l.innerHTML = `<input type="checkbox" data-rule="${i}"><span>${r}</span>`;
+  const cb = l.querySelector('input');
+  cb.addEventListener('change', ()=>{
+    l.classList.toggle('checked', cb.checked);
+    const all = $$('#rulesCard input').every(x=>x.checked);
+    $('#acceptRules').disabled = !all;
+    $('#acceptRules').textContent = all ? "I accept. Fully. 😌💙" : "Tick all six first 🙈";
+    if(all){ toast("All six? You're obsessed with me. 😏"); vibrate(30); }
+  });
+  rulesCard.appendChild(l);
+});
+$('#acceptRules').addEventListener('click', ()=>{
+  if($('#acceptRules').disabled) return;
+  $('#penaltyBox').classList.remove('hide');
+  $('#penaltyBox').scrollIntoView({behavior:'smooth'});
+  toast("Wait — one thing first 😈");
+});
+$$('input[name="penalty"]').forEach(r=>{
+  r.addEventListener('change', ()=>{
+    $('#penaltyDone').disabled = false;
+    $$('input[name="penalty"]').forEach(x=>x.closest('label').classList.toggle('checked', x.checked));
+  });
+});
+$('#penaltyDone').addEventListener('click', ()=>{
+  const val = $('input[name="penalty"]:checked')?.value;
+  if(!val) return;
+  localStorage.setItem('penalty', val);
+  toast("Penalty accepted 😌💋");
+  vibrate(40);
+  goTo('p-quiz');
+});
+
+/* ============================================================
+   QUIZ
+   ============================================================ */
+const QUIZ = [
+  {q:"What's my favourite thing about you?", opts:["Your smile","Your laugh","Your heart","All of it 😌"],
+   replies:["Correct. Also your smile. Always. 😊","Correct — I hear it in my dreams. 😌","Correct. It's the biggest one I know. 💙","Correct. Obviously. There was never another answer. 😏"]},
+  {q:"How much do I miss you right now?", opts:["A little","A lot","Too much","Enough to build this whole site"],
+   replies:["Correct (and a lie, you miss me more). 😌","Correct, but understated. 💫","Correct. Painfully. 🥺","Correct. Took me days. Worth it. 😏"]},
+  {q:"What's our best memory together?", opts:["The one where we laughed","The one where we talked all night","The one where we did nothing","All of them"],
+   replies:["Correct. I still smile. 😄","Correct. I replay it. 🌙","Correct. Those are my favourite kind. 🥰","Correct. Every single one. 💖"]},
+  {q:"If I could give you anything today, it'd be…", opts:["The world","A kiss","My forever","A nap 😴"],
+   replies:["Correct. But you already have me. 😌","Correct. Coming right up. 💋","Correct. No refunds. 💙","Correct, honestly. 😴😂"]}
+];
+let quizIdx = 0, quizAnswered = false;
+function renderQuiz(){
+  quizAnswered = false;
+  const q = QUIZ[quizIdx];
+  const card = $('#quizCard');
+  card.innerHTML = `<h2 style="font-size:1.1rem">${q.q}</h2>`;
+  q.opts.forEach((o,i)=>{
+    const b = document.createElement('button');
+    b.className = 'btn ghost'; b.style.margin = '6px 0'; b.textContent = o;
+    b.addEventListener('click', ()=>{
+      if(quizAnswered) return;
+      quizAnswered = true;
+      card.querySelectorAll('button').forEach(x => x.disabled = true);
+      b.classList.remove('ghost'); b.classList.add('silver');
+      toast(q.replies[i], 2600);
+      vibrate(25);
+      $('#quizNext').classList.remove('hide');
+      $('#quizNext').textContent = quizIdx < QUIZ.length-1 ? "Next 💞" : "Continue 💫";
+    });
+    card.appendChild(b);
+  });
+  $('#quizNext').classList.add('hide');
+}
+renderQuiz();
+$('#quizNext').addEventListener('click', ()=>{
+  quizIdx++;
+  if(quizIdx >= QUIZ.length){ goTo('p-selfie'); return; }
+  renderQuiz();
+});
+
+/* ============================================================
+   MEDIA HELPER — fixes camera/mic errors
+   ============================================================ */
+let activeStreams = [];
+function releaseAll(){
+  activeStreams.forEach(s => { try{ s.getTracks().forEach(t => t.stop()); }catch(e){} });
+  activeStreams = [];
+}
+async function getMedia(constraints){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    toast("⚠️ This browser can't access camera. Open in Chrome/Safari on HTTPS.", 4500);
+    throw new Error("no mediaDevices");
+  }
+  if(!window.isSecureContext){
+    toast("⚠️ Please open the link on HTTPS (not a downloaded file).", 4500);
+    throw new Error("not secure context");
+  }
+  releaseAll();
+  await new Promise(r => setTimeout(r, 250));
+  try{
+    const s = await navigator.mediaDevices.getUserMedia(constraints);
+    activeStreams.push(s);
+    return s;
+  }catch(err){
+    let msg = "Camera/mic blocked.";
+    if(err.name === "NotAllowedError") msg = "🚫 You tapped 'Block'. Tap 🔒 in the address bar → Allow → reload.";
+    else if(err.name === "NotFoundError") msg = "📷 No camera found on this device.";
+    else if(err.name === "NotReadableError") msg = "📷 Camera is busy. Close other apps using it and retry.";
+    else if(err.name === "OverconstrainedError") msg = "📷 Camera doesn't support that setting.";
+    toast(msg, 5000);
+    throw err;
+  }
+}
+
+/* ============================================================
+   SELFIE
+   ============================================================ */
+$('#selfieStart').addEventListener('click', async ()=>{
+  const btn = $('#selfieStart');
+  btn.disabled = true; btn.textContent = "Opening camera…";
+  try{
+    const v = $('#selfieVideo');
+    v.setAttribute('playsinline',''); v.muted = true;
+    const stream = await getMedia({ video: { facingMode:'user', width:{ideal:720}, height:{ideal:960} }, audio:false });
+    v.srcObject = stream;
+    await v.play().catch(()=>{});
+    show(v);
+    hide($('#selfieShot')); hide($('#selfieRetake')); hide($('#selfieNext'));
+    btn.textContent = "Camera on ✓";
+    let n = 3;
+    const tEl = $('#selfieTimer'); tEl.textContent = n; show(tEl);
+    vibrate(30);
+    const iv = setInterval(()=>{
+      n--;
+      if(n > 0){ tEl.textContent = n; vibrate(30); }
+      else{
+        clearInterval(iv); tEl.textContent = "😄"; vibrate([40,60,40]);
+        setTimeout(()=>{
+          try{ captureSelfie(); }catch(e){ toast("Photo failed. Try again 📷"); }
+          hide(tEl); btn.disabled = false; btn.textContent = "Retake 📸";
+        }, 400);
+      }
+    }, 900);
+  }catch(e){
+    btn.disabled = false; btn.textContent = "Try camera again 📸";
+    hide($('#selfieVideo'));
+  }
+});
+function captureSelfie(){
+  const v = $('#selfieVideo'), c = $('#selfieCanvas');
+  const w = v.videoWidth || 720, h = v.videoHeight || 960;
+  c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+  ctx.translate(w,0); ctx.scale(-1,1);
+  ctx.drawImage(v, 0, 0, w, h);
+  const data = c.toDataURL('image/jpeg', 0.9);
+  const img = $('#selfieShot'); img.src = data; show(img);
+  hide(v); releaseAll();
+  show($('#selfieRetake')); show($('#selfieNext'));
+  toast("Beautiful. Obviously. 😍");
+}
+$('#selfieRetake').addEventListener('click', ()=>{
+  hide($('#selfieShot')); hide($('#selfieRetake')); hide($('#selfieNext'));
+  $('#selfieStart').click();
+});
+$('#selfieNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-voice'); });
+
+/* ============================================================
+   VOICE
+   ============================================================ */
+let mediaRec = null, chunks = [], voiceTimerId = null, voiceSec = 30;
+$('#voiceStart').addEventListener('click', async ()=>{
+  try{
+    const stream = await getMedia({ audio:true });
+    mediaRec = new MediaRecorder(stream);
+    chunks = [];
+    mediaRec.ondataavailable = e => { if(e.data.size) chunks.push(e.data); };
+    mediaRec.onstop = ()=>{
+      if(!chunks.length){ toast("Nothing recorded. Try again 🎙️"); return; }
+      const blob = new Blob(chunks, { type:'audio/webm' });
+      const url = URL.createObjectURL(blob);
+      const a = $('#voicePlayback'); a.src = url; show(a);
+      show($('#voiceNext'));
+      hide($('#voiceStop')); hide($('#voiceStart'));
+      releaseAll();
+    };
+    mediaRec.start();
+    hide($('#voiceStart')); show($('#voiceStop'));
+    voiceSec = 30;
+    const tEl = $('#voiceTimer'); tEl.textContent = voiceSec; show(tEl);
+    voiceTimerId = setInterval(()=>{
+      voiceSec--; tEl.textContent = voiceSec;
+      if(voiceSec <= 0) stopVoice();
+    }, 1000);
+  }catch(e){ console.error(e); }
+});
+function stopVoice(){
+  clearInterval(voiceTimerId);
+  hide($('#voiceTimer'));
+  if(mediaRec && mediaRec.state === 'recording') mediaRec.stop();
+}
+$('#voiceStop').addEventListener('click', stopVoice);
+$('#voiceNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-dance'); });
+
+/* ============================================================
+   DANCE
+   ============================================================ */
+let danceRec = null, danceChunks = [], danceTimerId = null, danceSec = 15;
+$('#danceStart').addEventListener('click', async ()=>{
+  const btn = $('#danceStart');
+  btn.disabled = true; btn.textContent = "Opening camera…";
+  try{
+    const stream = await getMedia({
+      video: { facingMode:'user', width:{ideal:720}, height:{ideal:1280} },
+      audio: true
+    });
+    const p = $('#dancePreview');
+    p.setAttribute('playsinline',''); p.muted = true;
+    p.srcObject = stream;
+    await p.play().catch(()=>{});
+    show(p); hide($('#dancePlayback'));
+    danceRec = new MediaRecorder(stream);
+    danceChunks = [];
+    danceRec.ondataavailable = e => { if(e.data.size) danceChunks.push(e.data); };
+    danceRec.onstop = ()=>{
+      if(!danceChunks.length){ toast("Nothing recorded 🎬"); return; }
+      const blob = new Blob(danceChunks, { type:'video/webm' });
+      const url = URL.createObjectURL(blob);
+      const pb = $('#dancePlayback'); pb.src = url; show(pb);
+      hide(p); releaseAll();
+      hide($('#danceStop')); show($('#danceNext'));
+      btn.disabled = false; btn.textContent = "Retake 🎬";
+    };
+    danceRec.start();
+    show($('#danceStop')); btn.textContent = "Recording…";
+    danceSec = 15;
+    const tEl = $('#danceTimer'); tEl.textContent = danceSec; show(tEl);
+    danceTimerId = setInterval(()=>{
+      danceSec--; tEl.textContent = danceSec;
+      if(danceSec <= 0) stopDance();
+    }, 1000);
+  }catch(e){
+    btn.disabled = false; btn.textContent = "Try camera again 🎬";
+    hide($('#dancePreview'));
+  }
+});
+function stopDance(){
+  clearInterval(danceTimerId);
+  hide($('#danceTimer'));
+  if(danceRec && danceRec.state === 'recording') danceRec.stop();
+}
+$('#danceStop').addEventListener('click', stopDance);
+$('#danceNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-kiss'); });
+
+/* ============================================================
+   KISS
+   ============================================================ */
+const KISS_REPLIES = {
+  "Give me a kiss 💋": "Consider it done. 💋 (You owe me interest later.)",
+  "Come kiss me right now 🥵": "On my way. Don't move. 😏🔥",
+  "Cuddles first 🥰": "Deal. Forehead kisses included. 🥰",
+  "Surprise me 😈": "Oh, I intend to. But you'll have to wait. 😈💙"
+};
+$$('#kissCard button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const m = b.dataset.mood;
+    const box = $('#kissReply');
+    box.innerHTML = `<div class="big-emoji">💌</div><p style="font-weight:700">${KISS_REPLIES[m]}</p><p class="muted">Now tap Next. There's more. 💫</p>`;
+    show(box); show($('#kissNext'));
+    vibrate([20,50,20]); spawnHearts(8);
+  });
+});
+$('#kissNext').addEventListener('click', ()=> goTo('p-chapo'));
+
+/* ============================================================
+   CHAPO + DRINK + MUSIC
+   ============================================================ */
+function checkChapo(){
+  const c = $('#chapoYes').checked;
+  const d = $('#drinkYes').checked;
+  const m = $('#musicYes').checked;
+  const any = c || d || m;
+  $('#chapoNext').disabled = !any;
+  $('#chapoNext').textContent = any ? "Lock it in 😌💙" : "Tick what you'll do for me 😌";
+  ['chapoYes','drinkYes','musicYes'].forEach(id=>{
+    const el = $('#'+id);
+    el.closest('label').classList.toggle('checked', el.checked);
+  });
+}
+['chapoYes','drinkYes','musicYes'].forEach(id=>{
+  $('#'+id).addEventListener('change', checkChapo);
+});
+$('#chapoNext').addEventListener('click', ()=>{
+  toast("Deal. You're the best. 😌💙", 2400);
+  vibrate([40,80,40]);
+  spawnHearts(6);
+  setTimeout(()=> goTo('p-accept'), 900);
+});
+
+/* ============================================================
+   YES-ONLY ACCEPTANCE — No button runs away
+   ============================================================ */
+const noBtn = $('#noBtn');
+const yesWrap = $('#yesWrap');
+let noDodges = 0;
+function dodgeNo(){
+  noDodges++;
+  const wrapRect = yesWrap.getBoundingClientRect();
+  const maxX = wrapRect.width - 70;
+  const maxY = wrapRect.height - 40;
+  const x = Math.random() * Math.max(maxX, 10);
+  const y = Math.random() * Math.max(maxY, 10);
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = (y + 220) + 'px';
+  const msgs = [
+    "Nope. Try again. 😏",
+    "The button is faster than you. 😂",
+    "It's dodging. Take the hint. 😌",
+    "You really tried? Cute. 💙",
+    "That button has commitment issues.",
+    "It's not working. Say yes. 😌",
+    "Still dodging… 🏃‍♂️💨",
+    "You can't catch it. Give up and say yes. 😏"
+  ];
+  toast(msgs[Math.min(noDodges-1, msgs.length-1)], 1400);
+  vibrate(15);
+}
+noBtn.addEventListener('mouseenter', dodgeNo);
+noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); dodgeNo(); }, {passive:false});
+noBtn.addEventListener('click', (e)=>{ e.preventDefault(); dodgeNo(); });
+
+$('#yesBtn').addEventListener('click', ()=>{
+  show($('#yesReply'));
+  show($('#acceptNext'));
+  $('#yesWrap').style.display = 'none';
+  celebrate();
+  spawnHearts(15);
+  vibrate([50,80,50,80,120]);
+  toast("She said YES 🥹💙", 3000);
+});
+$('#acceptNext').addEventListener('click', ()=> goTo('p-surprise'));
+
+/* ============================================================
+   SURPRISE
+   ============================================================ */
+$('#surpriseBox').addEventListener('click', ()=>{
+  hide($('#surpriseBox'));
+  show($('#surpriseReply'));
+  show($('#surpriseNext'));
+  burst(innerWidth/2, innerHeight*0.4, 80);
+  spawnHearts(10);
+  vibrate([50,80,50]);
+});
+$('#surpriseNext').addEventListener('click', ()=> goTo('p-privacy'));
+
+/* ============================================================
+   PRIVACY
+   ============================================================ */
+$('#privacyNext').addEventListener('click', ()=> goTo('p-gallery'));
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+(function buildGallery(){
+  const pg = $('#photoGallery');
+  CONFIG.photos.forEach(src=>{
+    const img = document.createElement('img');
+    img.src = src; img.loading = 'lazy';
+    pg.appendChild(img);
+  });
+  const vg = $('#videoGallery');
+  CONFIG.videos.forEach(src=>{
+    const v = document.createElement('video');
+    v.src = src; v.controls = true; v.playsInline = true;
+    vg.appendChild(v);
+  });
+})();
+$('#photoInput').addEventListener('change', e=>{
+  const f = e.target.files[0]; if(!f) return;
+  const url = URL.createObjectURL(f);
+  const img = document.createElement('img'); img.src = url;
+  $('#photoGallery').prepend(img);
+  toast("Added to the museum 🖼️💙");
+});
+$('#galleryNext').addEventListener('click', ()=>{ goTo('p-finale'); runFinale(); });
+
+/* ============================================================
+   FINALE — love letter + 10 promises
+   ============================================================ */
+const LOVE_LETTER = `My love,
+
+I don't know how to fit everything I feel into one page — so I built you a whole little world instead. Every heart floating up there is a thought I've had about you this week. Every promise below is something I mean with my whole chest.
+
+You are the softest thing that ever happened to me. You are also the strongest. I've watched you carry things quietly that would break other people, and then turn around and ask if I've eaten. That is who you are. That is who I love.
+
+So today, on your birthday, I don't just want to celebrate you — I want to promise you things. Real things. The kind that don't need an audience.
+
+Here they are. Read them slowly. They're yours.
+
+— Yours, always. 💙`;
+
+const PROMISES = [
+  "I promise to choose you — not just today, but on the boring Tuesdays and the hard Sundays too. 💙",
+  "I promise to be your safest place. The one where you don't have to perform, explain, or be okay. 🛡️",
+  "I promise to laugh with you, at your jokes, and at myself when I'm wrong. 😂",
+  "I promise to grow with you, not away from you — even when growing is uncomfortable. 🌱",
+  "I promise forehead kisses on your worst days, and louder ones on your best. 😘",
+  "I promise to listen before I react, and to apologise properly when I don't. 🕊️",
+  "I promise to protect your privacy like it's my own — your trust is not something I'll ever gamble with. 🔒",
+  "I promise to keep flirting with you when we're 70 and can't remember why we walked into a room. 😏",
+  "I promise to never make you feel small, never make you beg for attention, and never make you question where you stand with me. 💫",
+  "I promise: forever isn't long enough — but I'll spend every day of it trying. ♾️"
+];
+
+let finaleRan = false;
+function runFinale(){
+  if(finaleRan) return; finaleRan = true;
+
+  const letterEl = $('#loveLetterText');
+  letterEl.textContent = '';
+  let i = 0;
+  const typeIv = setInterval(()=>{
+    letterEl.textContent += LOVE_LETTER[i];
+    i++;
+    if(i >= LOVE_LETTER.length){
+      clearInterval(typeIv);
+      showPromises();
+    }
+  }, 15);
+
+  function showPromises(){
+    const box = $('#promises'); box.innerHTML = '';
+    PROMISES.forEach((p, idx)=>{
+      const d = document.createElement('div');
+      d.className = 'promise'; d.textContent = p;
+      box.appendChild(d);
+      setTimeout(()=>{
+        d.classList.add('show');
+        spawnHearts(2);
+        vibrate(18);
+        if(idx % 3 === 2) burst(innerWidth/2, innerHeight*0.5, 25);
+      }, 650 * (idx + 1));
+    });
+    setTimeout(()=>{
+      celebrate();
+      show($('#finaleBtn'));
+      vibrate([50,80,50,80,120]);
+      toast("Scroll down — one more thing 💌", 3500);
+    }, 650 * PROMISES.length + 500);
+  }
+}
+
+$('#finaleBtn').addEventListener('click', ()=>{
+  show($('#finaleLove'));
+  celebrate();
+  spawnHearts(20);
+  toast("Happy birthday, my love. 🎂💙", 4000);
+  $('#finaleBtn').disabled = true;
+  window.scrollTo({ top: document.body.scrollHeight, behavior:'smooth' });
+});
+
+/* ============================================================
+   First paint
+   ============================================================ */
+$('#progress').style.width = (1/pages.length*100)+'%';
+</script>
+</body>
+</html>

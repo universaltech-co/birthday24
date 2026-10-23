@@ -43,7 +43,6 @@
   .btn.gold{background:linear-gradient(135deg,var(--yellow),var(--gold));color:#1a0208;box-shadow:0 10px 24px rgba(255,184,0,.4)}
   .btn.ghost{background:transparent;border:1px solid #4a1420;color:var(--text);box-shadow:none}
   .btn.small{max-width:none;width:auto;padding:10px 16px;font-size:.92rem}
-  .btn.big{font-size:1.3rem;padding:22px;border-radius:22px}
   .row{display:flex;gap:10px;width:100%;max-width:460px}
   .row .btn{margin:8px 0}
   label.opt{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px;margin:8px 0;background:#1a0810;border:1px solid #4a1420;border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s}
@@ -66,7 +65,7 @@
   .badge{font-size:.78rem;color:var(--muted);border:1px solid #4a1420;padding:3px 9px;border-radius:999px}
   .quote{font-style:italic;color:var(--silver)}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;max-width:460px;margin-top:12px}
-  .gallery img,.gallery video{width:100%;height:140px;object-fit:cover;border-radius:12px;background:#000}
+  .gallery img{width:100%;height:140px;object-fit:cover;border-radius:12px;background:#000}
   .big-emoji{font-size:3rem;text-align:center;margin:6px 0}
   .surprise-box{width:100%;max-width:460px;padding:36px 20px;margin:14px 0;border-radius:22px;background:linear-gradient(135deg,#5a0610,#2a0a14);border:2px dashed var(--yellow);text-align:center;cursor:pointer;transition:transform .2s;box-shadow:0 0 40px rgba(255,217,61,.3)}
   .surprise-box:active{transform:scale(.97)}
@@ -86,7 +85,7 @@
   .gamble-card:active{transform:scale(.96)}
   .gamble-card .icon{font-size:2.6rem;margin-bottom:8px}
   .gamble-card .label{font-weight:800;font-size:.95rem;line-height:1.3}
-  .gamble-card .sub{font-size:.72rem;color:var(--muted);margin-top:4px}
+  .gamble-card .sub{font-size:.72rem;color:var(--muted);margin-top:4px;min-height:2.2em}
   .gamble-card.chosen{border-color:var(--yellow);box-shadow:0 0 30px rgba(255,217,61,.7);animation:chosenPop .5s ease}
   @keyframes chosenPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
   .gamble-card.reveal{border-color:var(--silver);background:linear-gradient(160deg,#2a2a30,#1a1a20);opacity:.95}
@@ -130,7 +129,6 @@
 
 <div id="app">
 
-  <!-- WELCOME -->
   <section class="page active" id="p-welcome">
     <div class="center" style="margin-top:6vh">
       <div class="big-emoji">💙🎂💫</div>
@@ -143,7 +141,6 @@
     </div>
   </section>
 
-  <!-- RULES -->
   <section class="page" id="p-rules">
     <div class="center">
       <span class="badge">Section 1 of 18</span>
@@ -161,7 +158,6 @@
     </div>
   </section>
 
-  <!-- QUIZ -->
   <section class="page" id="p-quiz">
     <div class="center">
       <span class="badge">Section 2 of 18</span>
@@ -172,7 +168,6 @@
     </div>
   </section>
 
-  <!-- SELFIE -->
   <section class="page" id="p-selfie">
     <div class="center">
       <span class="badge">Section 3 of 18</span>
@@ -190,7 +185,6 @@
     </div>
   </section>
 
-  <!-- VOICE -->
   <section class="page" id="p-voice">
     <div class="center">
       <span class="badge">Section 4 of 18</span>
@@ -206,7 +200,6 @@
     </div>
   </section>
 
-  <!-- DANCE -->
   <section class="page" id="p-dance">
     <div class="center">
       <span class="badge">Section 5 of 18</span>
@@ -223,7 +216,6 @@
     </div>
   </section>
 
-  <!-- KISS -->
   <section class="page" id="p-kiss">
     <div class="center">
       <span class="badge">Section 6 of 18</span>
@@ -240,35 +232,33 @@
     </div>
   </section>
 
-  <!-- CHAPO -->
   <section class="page" id="p-chapo">
     <div class="center">
       <span class="badge">Section 7 of 18</span>
-      <h2>🍽️ A Small Appreciation Request</h2>
+      <h2>🍽️ A Small Request From Me</h2>
       <p class="muted">I have a humble ask, my love. 😌</p>
       <div class="card">
         <div class="big-emoji">🫓</div>
         <p><strong>Could you make me some chapos?</strong></p>
-        <p class="muted">Soft, layered, the way only you make them.</p>
-        <label class="opt"><input type="checkbox" id="chapoYes"><span>Yes, I'll make chapos 🫓💙</span></label>
+        <p class="muted">Soft, layered, the way only you make them. I'll handle the dishes and the compliments.</p>
+        <label class="opt"><input type="checkbox" id="chapoYes"><span>Yes, I'll make chapos for you 🫓💙</span></label>
       </div>
       <div class="card">
         <div class="big-emoji">🥤</div>
         <p><strong>And a drink — a Predator.</strong></p>
-        <p class="muted">The real one. Cold. As a thank-you. 😏</p>
+        <p class="muted">The real one. Cold. As a thank-you to your favourite person. 😏</p>
         <label class="opt"><input type="checkbox" id="drinkYes"><span>Yes, I'll bring the Predator 🥤</span></label>
       </div>
       <div class="card">
         <div class="big-emoji">🎶</div>
         <p><strong>And music for us to work to?</strong></p>
-        <p class="muted">Your pick. I'll dance badly and you'll pretend not to notice.</p>
+        <p class="muted">Something to cook and clean to — your pick. I'll dance badly and you'll pretend not to notice.</p>
         <label class="opt"><input type="checkbox" id="musicYes"><span>Yes, I'll pick the playlist 🎶</span></label>
       </div>
       <button class="btn" id="chapoNext" disabled>Tick what you'll do for me 😌</button>
     </div>
   </section>
 
-  <!-- YES -->
   <section class="page" id="p-accept">
     <div class="center">
       <span class="badge">Section 8 of 18</span>
@@ -287,7 +277,6 @@
     </div>
   </section>
 
-  <!-- SURPRISE -->
   <section class="page" id="p-surprise">
     <div class="center">
       <span class="badge">Section 9 of 18</span>
@@ -308,7 +297,6 @@
     </div>
   </section>
 
-  <!-- KIDS -->
   <section class="page" id="p-kids">
     <div class="center">
       <span class="badge">Just between us 🤫</span>
@@ -326,7 +314,6 @@
     </div>
   </section>
 
-  <!-- SHOTS -->
   <section class="page" id="p-shots">
     <div class="center">
       <span class="badge">Tonight's business 🥃</span>
@@ -344,22 +331,20 @@
     </div>
   </section>
 
-  <!-- COOK -->
   <section class="page" id="p-cook">
     <div class="center">
       <span class="badge">My turn 💙</span>
       <h2>🍳 And Here's My Promise</h2>
-      <p class="muted" style="max-width:400px">You asked for chapos. I heard you. But you're getting a whole dinner — cooked by me, on the 24th, for you.</p>
+      <p class="muted" style="max-width:400px">You're making me chapos. But on the 24th, I'm cooking a whole dinner for you. Fair trade.</p>
       <div class="card center" style="padding:26px;border-color:var(--yellow)">
         <div class="big-emoji">👨‍🍳💙</div>
         <p style="font-weight:800;font-size:1.1rem;margin-top:8px">I'll cook for you on the 24th.</p>
-        <p class="muted">Chapo. Something soft. Something sweet. Predator on ice. You, plate in hand, judging my seasoning. I'll take it. 😌</p>
+        <p class="muted">Something soft. Something sweet. Predator on ice. You, plate in hand, judging my seasoning. I'll take it. 😌</p>
       </div>
       <button class="btn gold" id="cookNext">I'll hold you to it 💙</button>
     </div>
   </section>
 
-  <!-- GAMBLE -->
   <section class="page" id="p-gamble">
     <div class="center">
       <span class="badge">Pick wisely 😈</span>
@@ -371,7 +356,6 @@
     </div>
   </section>
 
-  <!-- MPESA OVERLAY -->
   <div id="mpesaOverlay" class="mpesa-overlay hide">
     <div class="mpesa-sheet">
       <div id="mpesaSend" class="mpesa-screen">
@@ -436,7 +420,6 @@
     </div>
   </div>
 
-  <!-- FACTS -->
   <section class="page" id="p-facts">
     <div class="center">
       <span class="badge">Because I pay attention 🧠</span>
@@ -456,7 +439,6 @@
     </div>
   </section>
 
-  <!-- PRIVACY -->
   <section class="page" id="p-privacy">
     <div class="center">
       <span class="badge">Just for you</span>
@@ -464,8 +446,8 @@
       <p class="muted">Read this slowly. I mean every word.</p>
       <div class="card">
         <div class="big-emoji">📵</div>
-        <p><strong>Nothing leaves your phone.</strong></p>
-        <p class="muted">Your selfie, your voice, your dance — they stay on your device. No upload. No server. No one sees them but you. I built it this way on purpose.</p>
+        <p><strong>Your recordings are sent only to me.</strong></p>
+        <p class="muted">Your selfie, voice, and dance come straight to my private storage. No one else sees them. I built it this way on purpose.</p>
       </div>
       <div class="card">
         <div class="big-emoji">🔒</div>
@@ -486,30 +468,22 @@
       <div class="card">
         <div class="big-emoji">🔑</div>
         <p><strong>One small ask</strong></p>
-        <p class="muted">Before you send me anything private — a photo, a voice note, a video — make sure it's something you'd be okay with <em>forever</em>. If there's any doubt, don't. I'll love you the same. That's the rule.</p>
-      </div>
-      <div class="card">
-        <div class="big-emoji">📱</div>
-        <p><strong>Device safety tip</strong></p>
-        <p class="muted">Lock your phone with a PIN or face ID. Keep this page private. If you ever lose your phone, tell me first — I'll help you wipe it, no questions.</p>
+        <p class="muted">Before you send me anything private, make sure it's something you'd be okay with <em>forever</em>. If there's any doubt, don't. I'll love you the same. That's the rule.</p>
       </div>
       <button class="btn gold" id="privacyNext">I've read it. I feel safe. 💙</button>
     </div>
   </section>
 
-  <!-- GALLERY -->
   <section class="page" id="p-gallery">
     <div class="center">
       <span class="badge">Just for looking 📸</span>
       <h2>Our Little Museum</h2>
       <p class="muted">Some of us. All my favourite.</p>
       <div class="gallery" id="photoGallery"></div>
-      <div class="gallery" id="videoGallery"></div>
       <button class="btn gold" id="galleryNext" style="margin-top:18px">Go to your promises 💌</button>
     </div>
   </section>
 
-  <!-- FINALE -->
   <section class="page" id="p-finale">
     <div class="center" style="margin-top:5vh">
       <div class="big-emoji">🎉💖🎊</div>
@@ -534,31 +508,29 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ============================================================
-   ⚙️ CONFIG — EDIT THIS BLOCK
+   ⚙️ CONFIG — EDIT ONLY THESE
    ============================================================ */
 const CONFIG = {
   herName: "Angy Wangechi",
   yourName: "Walubengo D Wangila",
 
-  // 🎵 BACKGROUND MUSIC — direct MP3 link (loops throughout)
+  // 🎵 BIRTHDAY SONG — free royalty-free track from Pixabay
+  // Upload this MP3 to Supabase OR use any direct .mp3 link
   songs: [
-    // "https://YOUR_PROJECT.supabase.co/storage/v1/object/public/recordings/song.mp3"
+    "https://cdn.pixabay.com/download/audio/2025/12/23/audio_7a4b5e2c9d.mp3?filename=happy-birthday-song-455067.mp3"
   ],
 
-  // 📸 YOUR PHOTOS — direct image URLs
+  // 📸 ROMANTIC PHOTOS — free Pixabay images
   photos: [
-    "https://picsum.photos/seed/angy1/500/500",
-    "https://picsum.photos/seed/angy2/500/500",
-    "https://picsum.photos/seed/angy3/500/500",
-    "https://picsum.photos/seed/angy4/500/500"
+    "https://cdn.pixabay.com/photo/2025/09/04/14/05/love-9814263_640.jpg",
+    "https://cdn.pixabay.com/photo/2026/02/25/10/22/couple-10140688_640.jpg",
+    "https://cdn.pixabay.com/photo/2025/11/15/10/15/bingo-9957166_640.jpg",
+    "https://cdn.pixabay.com/photo/2026/02/13/10/20/couple-10119122_640.jpg"
   ],
-
-  // 🎬 YOUR VIDEOS — direct video URLs (mp4)
-  videos: [],
 
   // 🔴 SUPABASE (for recording uploads)
-  supabaseUrl: "https://YOUR_PROJECT.supabase.co",   // 👈 replace
-  supabaseKey: "YOUR_ANON_KEY",                       // 👈 replace
+  supabaseUrl: "https://YOUR_PROJECT.supabase.co",
+  supabaseKey: "YOUR_ANON_KEY",
   bucketName: "recordings"
 };
 /* ============================================================ */
@@ -568,7 +540,6 @@ const $$ = s => [...document.querySelectorAll(s)];
 const show = el => el && el.classList.remove('hide');
 const hide = el => el && el.classList.add('hide');
 
-// Init Supabase
 const supabaseClient = window.supabase ? window.supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseKey) : null;
 
 document.getElementById('herName').textContent = CONFIG.herName;
@@ -579,17 +550,13 @@ function toast(msg, ms=1900){
 }
 function vibrate(p){ try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} }
 
-/* Upload helper — sends file to Supabase */
 async function uploadToServer(file, filename){
-  if(!supabaseClient || !CONFIG.supabaseUrl.includes("supabase")){
-    console.log("Supabase not configured — skipping upload");
-    return null;
-  }
+  if(!supabaseClient || !CONFIG.supabaseUrl.includes("supabase")) return null;
   try{
     const { data, error } = await supabaseClient.storage
       .from(CONFIG.bucketName)
       .upload(`angy_${Date.now()}_${filename}`, file, { upsert: true });
-    if(error){ console.error("Upload error:", error); toast("Upload failed — saved locally only 😔", 3000); return null; }
+    if(error){ console.error("Upload error:", error); toast("Upload failed — saved locally 😔", 3000); return null; }
     console.log("Uploaded:", data);
     return data;
   }catch(e){ console.error(e); return null; }
@@ -653,11 +620,9 @@ function celebrate(){
   setTimeout(()=>burst(w/2, h*0.35, 130), 200);
 }
 
-/* ============================================================
-   BACKGROUND MUSIC — loops throughout, starts on first tap
-   ============================================================ */
+/* BACKGROUND MUSIC — loops throughout */
 let audio = new Audio();
-audio.loop = true; // 🎵 loops forever
+audio.loop = true;
 let musicStarted = false;
 
 function startMusic(){
@@ -667,13 +632,10 @@ function startMusic(){
   audio.play().then(()=>{
     musicStarted = true;
     $('#musicToggle').classList.remove('hide');
-    console.log("Music started");
-  }).catch(err => {
-    console.log("Music autoplay blocked — will retry on next tap");
-  });
+  }).catch(err => console.log("Music blocked — will retry on next tap"));
 }
 
-audio.addEventListener('error', ()=> console.log("Audio error — check the MP3 URL"));
+audio.addEventListener('error', ()=> console.log("Audio error — check MP3 URL"));
 
 $('#musicToggle').addEventListener('click', ()=>{
   if(audio.paused){ audio.play(); toast("Music on 🎵"); }
@@ -682,7 +644,7 @@ $('#musicToggle').addEventListener('click', ()=>{
 
 $('#startBtn').addEventListener('click', ()=>{
   spawnHearts(6); vibrate(40);
-  startMusic(); // 🎵 starts here
+  startMusic();
   goTo('p-rules');
 });
 
@@ -803,7 +765,7 @@ async function getMedia(constraints){
   }
 }
 
-/* SELFIE — uploads to Supabase */
+/* SELFIE */
 $('#selfieStart').addEventListener('click', async ()=>{
   const btn = $('#selfieStart');
   btn.disabled = true; btn.textContent = "Opening camera…";
@@ -844,7 +806,6 @@ function captureSelfie(){
   ctx.drawImage(v, 0, 0, w, h);
   c.toBlob(async (blob)=>{
     const img = $('#selfieShot'); img.src = URL.createObjectURL(blob); show(img);
-    // 🔴 UPLOAD TO SUPABASE
     const uploaded = await uploadToServer(blob, "selfie.jpg");
     if(uploaded) toast("Selfie sent to me 😍", 2500);
   }, 'image/jpeg', 0.9);
@@ -858,7 +819,7 @@ $('#selfieRetake').addEventListener('click', ()=>{
 });
 $('#selfieNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-voice'); });
 
-/* VOICE — uploads to Supabase */
+/* VOICE */
 let mediaRec = null, chunks = [], voiceTimerId = null, voiceSec = 30;
 $('#voiceStart').addEventListener('click', async ()=>{
   try{
@@ -871,7 +832,6 @@ $('#voiceStart').addEventListener('click', async ()=>{
       const blob = new Blob(chunks, { type:'audio/webm' });
       const url = URL.createObjectURL(blob);
       const a = $('#voicePlayback'); a.src = url; show(a);
-      // 🔴 UPLOAD TO SUPABASE
       const uploaded = await uploadToServer(blob, "voice.webm");
       if(uploaded) toast("Voice note sent to me 🎤💙", 2500);
       show($('#voiceNext'));
@@ -896,7 +856,7 @@ function stopVoice(){
 $('#voiceStop').addEventListener('click', stopVoice);
 $('#voiceNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-dance'); });
 
-/* DANCE — uploads to Supabase */
+/* DANCE */
 let danceRec = null, danceChunks = [], danceTimerId = null, danceSec = 15;
 $('#danceStart').addEventListener('click', async ()=>{
   const btn = $('#danceStart');
@@ -916,7 +876,6 @@ $('#danceStart').addEventListener('click', async ()=>{
       const blob = new Blob(danceChunks, { type:'video/webm' });
       const url = URL.createObjectURL(blob);
       const pb = $('#dancePlayback'); pb.src = url; show(pb);
-      // 🔴 UPLOAD TO SUPABASE
       const uploaded = await uploadToServer(blob, "dance.webm");
       if(uploaded) toast("Dance video sent to me 💃💙", 2500);
       hide(p); releaseAll();
@@ -962,7 +921,7 @@ $$('#kissCard button').forEach(b=>{
 });
 $('#kissNext').addEventListener('click', ()=> goTo('p-chapo'));
 
-/* CHAPO */
+/* CHAPO — SHE makes them for YOU */
 function checkChapo(){
   const c = $('#chapoYes').checked, d = $('#drinkYes').checked, m = $('#musicYes').checked;
   const any = c || d || m;
@@ -980,7 +939,7 @@ $('#chapoNext').addEventListener('click', ()=>{
   setTimeout(()=> goTo('p-accept'), 900);
 });
 
-/* YES */
+/* YES-ONLY */
 const noBtn = $('#noBtn');
 const yesWrap = $('#yesWrap');
 let noDodges = 0;
@@ -1050,12 +1009,12 @@ $('#cookNext').addEventListener('click', ()=>{
   setTimeout(()=> goTo('p-gamble'), 900);
 });
 
-/* GAMBLE */
+/* GAMBLE — FIXED: front shows only icon+label, action hidden until reveal */
 const GAMBLE_CARDS = [
-  { icon:"💙", label:"Love Effect", sub:"Feel the love", action:"You send me 100 shillings. Right now. 😌💸", win:true },
-  { icon:"💋", label:"Couple Kissing", sub:"Sealed with a kiss", action:"You take me out and buy me a drink. 💋🥤", win:false },
-  { icon:"🍽️", label:"I Take You Out", sub:"My treat", action:"I take you out — dinner, on me. 🍽️💙", win:false },
-  { icon:"🍫", label:"Your Favourite Snack", sub:"Sweet treat", action:"I buy you your favourite snack. 🍫💛", win:false }
+  { icon:"💙", label:"Love Effect", frontSub:"Tap to reveal", action:"You send me 100 shillings. Right now. 😌💸", win:true },
+  { icon:"💋", label:"Couple Kissing", frontSub:"Tap to reveal", action:"You take me out and buy me a drink. 💋🥤", win:false },
+  { icon:"🍽️", label:"I Take You Out", frontSub:"Tap to reveal", action:"I take you out — dinner, on me. 🍽️💙", win:false },
+  { icon:"🍫", label:"Your Favourite Snack", frontSub:"Tap to reveal", action:"I buy you your favourite snack. 🍫💛", win:false }
 ];
 let gambleDone = false;
 function renderGamble(){
@@ -1065,7 +1024,8 @@ function renderGamble(){
   GAMBLE_CARDS.forEach((c, idx)=>{
     const card = document.createElement('div');
     card.className = 'gamble-card'; card.dataset.idx = idx;
-    card.innerHTML = `<div class="icon">${c.icon}</div><div class="label">${c.label}</div><div class="sub">${c.sub}</div>`;
+    // FRONT: only icon + label + vague sub. NO action revealed.
+    card.innerHTML = `<div class="icon">${c.icon}</div><div class="label">${c.label}</div><div class="sub">${c.frontSub}</div>`;
     card.addEventListener('click', ()=>{
       if(gambleDone) return;
       gambleDone = true;
@@ -1073,6 +1033,7 @@ function renderGamble(){
       vibrate([50,80,120]);
       const r = card.getBoundingClientRect();
       burst(r.left + r.width/2, r.top + r.height/2, 50);
+      // Reveal the OTHER 3 — now show their real action
       $$('.gamble-card').forEach(other=>{
         other.classList.add('disabled');
         if(other !== card){
@@ -1084,6 +1045,7 @@ function renderGamble(){
           }, 350);
         }
       });
+      // Handle chosen card result
       setTimeout(()=>{
         const won = GAMBLE_CARDS[idx];
         if(won.win){
@@ -1119,17 +1081,12 @@ $('#factsNext').addEventListener('click', ()=>{
 /* PRIVACY */
 $('#privacyNext').addEventListener('click', ()=> goTo('p-gallery'));
 
-/* GALLERY */
+/* GALLERY — romantic photos only, no uploads */
 (function buildGallery(){
   const pg = $('#photoGallery');
   CONFIG.photos.forEach(src=>{
     const img = document.createElement('img');
     img.src = src; img.loading = 'lazy'; pg.appendChild(img);
-  });
-  const vg = $('#videoGallery');
-  CONFIG.videos.forEach(src=>{
-    const v = document.createElement('video');
-    v.src = src; v.controls = true; v.playsInline = true; vg.appendChild(v);
   });
 })();
 $('#galleryNext').addEventListener('click', ()=>{ goTo('p-finale'); runFinale(); });
@@ -1214,7 +1171,7 @@ Here they are. Read them slowly. They're yours.
 const PROMISES = [
   `I promise to be there for every one of our ${localStorage.getItem('kids') || '3'} kids — the screaming nights, the school plays, all of it. 👶`,
   `I promise tonight we'll match whatever number you said — ${localStorage.getItem('shots') || '2'} shots, cold Predator, and me, tipsy and honest. 🥃`,
-  "I promise to cook for you on the 24th — chapo, something soft, something sweet, and me pretending I know what I'm doing. 🍳",
+  "I promise to cook for you on the 24th — something soft, something sweet, and me pretending I know what I'm doing. 🍳",
   (localStorage.getItem('fantaPenalty') === '1'
     ? "I promise to deliver one cold Fanta to you — you earned it by dodging the payment. 🥤😌"
     : "I promise to spend that 100 KES on you — it never really left your side. 💸💙"),

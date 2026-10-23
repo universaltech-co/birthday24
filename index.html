@@ -51,7 +51,7 @@
   label.opt.checked{border-color:var(--yellow);background:#2a1015}
   .toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);background:#2a0a14;color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.6);border:1px solid var(--red);opacity:0;transition:.3s;z-index:999;max-width:90%;text-align:center;font-size:.95rem}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--yellow),var(--red),var(--silver));width:0;transition:width .4s;z-index:50;border-radius:0 4px 4px 0}
+  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--yellow),var(--red),var(--silver));width:0;transition:width .4s;z-index:500;border-radius:0 4px 4px 0}
   .hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
   .heart{position:absolute;font-size:18px;animation:float linear forwards;opacity:.9}
   @keyframes float{from{transform:translateY(0) scale(1);opacity:.9}to{transform:translateY(-110vh) scale(1.4);opacity:0}}
@@ -75,7 +75,6 @@
   .yes-big{width:100%;padding:36px 20px;font-size:1.6rem;font-weight:900;border:none;border-radius:24px;cursor:pointer;background:linear-gradient(135deg,var(--red),#ff6b7a);color:#fff;box-shadow:0 20px 50px rgba(230,57,70,.6);animation:pulse 1.8s infinite}
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
   .no-tiny{position:absolute;padding:6px 12px;font-size:.75rem;border-radius:10px;background:#1a0810;color:#7a6070;border:1px solid #4a1420;cursor:pointer;transition:left .3s ease,top .3s ease}
-  .music-note{position:fixed;bottom:20px;left:20px;font-size:1.6rem;z-index:60;cursor:pointer;animation:wiggle 2s infinite}
   .counter{display:flex;align-items:center;justify-content:center;gap:22px;margin:16px 0}
   .counter button{width:64px;height:64px;border-radius:50%;border:none;font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--red),#ff6b7a);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(230,57,70,.4)}
   .counter button:active{transform:scale(.92)}
@@ -99,7 +98,7 @@
   .fact .body{text-align:left}
   .fact .body strong{color:var(--yellow)}
   .fact .body span{color:var(--silver);font-size:.85rem;display:block;margin-top:2px}
-  .mpesa-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .25s ease}
+  .mpesa-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:600;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .25s ease}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .mpesa-sheet{width:100%;max-width:520px;background:#0f0a14;border-radius:24px 24px 0 0;padding:22px 20px 28px;border-top:3px solid var(--red);box-shadow:0 -20px 60px rgba(0,0,0,.7);animation:slideUp .35s cubic-bezier(.2,.9,.3,1.2);max-height:92vh;overflow-y:auto}
   @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
@@ -117,6 +116,49 @@
   .pin-input:focus{border-color:var(--yellow);box-shadow:0 0 16px rgba(255,217,61,.3)}
   .mpesa-spinner{width:64px;height:64px;border-radius:50%;border:5px solid #3a2030;border-top-color:var(--yellow);margin:24px auto 0;animation:spin 1s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ===== MUSIC BAR ===== */
+  .music-bar{
+    position:fixed;top:6px;left:50%;transform:translateX(-50%);
+    width:calc(100% - 24px);max-width:460px;
+    background:linear-gradient(135deg,rgba(90,6,16,.95),rgba(26,8,16,.95));
+    border:1px solid #4a1420;border-radius:18px;
+    padding:10px 14px;z-index:400;
+    display:flex;align-items:center;gap:12px;
+    box-shadow:0 8px 24px rgba(0,0,0,.5);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  }
+  .music-btn{
+    width:42px;height:42px;border-radius:50%;border:none;
+    background:linear-gradient(135deg,var(--yellow),var(--gold));
+    color:#1a0208;font-size:1.1rem;font-weight:900;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 12px rgba(255,184,0,.4);flex:0 0 auto;
+  }
+  .music-btn:active{transform:scale(.92)}
+  .music-info{flex:1;min-width:0;text-align:left;overflow:hidden}
+  .music-title{font-size:.82rem;font-weight:800;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .music-status{font-size:.7rem;color:var(--muted);margin-top:1px}
+  .music-bars{display:flex;gap:3px;align-items:flex-end;height:22px;flex:0 0 auto}
+  .music-bars span{width:3px;background:var(--yellow);border-radius:2px;height:6px;transition:height .2s}
+  .music-bars.playing span{animation:barPulse .9s ease-in-out infinite}
+  .music-bars.playing span:nth-child(2){animation-delay:.15s}
+  .music-bars.playing span:nth-child(3){animation-delay:.3s}
+  .music-bars.playing span:nth-child(4){animation-delay:.45s}
+  @keyframes barPulse{0%,100%{height:6px}50%{height:22px}}
+
+  .page{padding-top:80px !important}
+  #p-welcome .center{margin-top:2vh !important}
+
+  /* ===== HIDDEN CARD FRONT ===== */
+  .gamble-card .icon-hidden{
+    font-size:3.4rem;margin-bottom:6px;
+    filter:brightness(.7);
+    animation:shimmer 2.4s ease-in-out infinite;
+  }
+  @keyframes shimmer{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
+  .gamble-card .qmark{font-size:1.4rem;font-weight:900;color:var(--yellow);letter-spacing:4px;margin-top:4px}
+  .gamble-card .tap-hint{font-size:.7rem;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
 </style>
 </head>
 <body>
@@ -125,12 +167,20 @@
 <div class="hearts" id="hearts"></div>
 <div class="toast" id="toast"></div>
 <canvas id="fw"></canvas>
-<div class="music-note hide" id="musicToggle" title="Toggle music">🎵</div>
+
+<div id="musicBar" class="music-bar">
+  <button class="music-btn" id="musicBtn" aria-label="Play music"><span id="musicIcon">▶</span></button>
+  <div class="music-info">
+    <div class="music-title">Birthday song 🎵</div>
+    <div class="music-status" id="musicStatus">Tap to play</div>
+  </div>
+  <div class="music-bars" id="musicBars"><span></span><span></span><span></span><span></span></div>
+</div>
 
 <div id="app">
 
   <section class="page active" id="p-welcome">
-    <div class="center" style="margin-top:6vh">
+    <div class="center" style="margin-top:2vh">
       <div class="big-emoji">💙🎂💫</div>
       <h1>Happy Birthday,<br><span id="herName">Angy</span> 💖</h1>
       <p class="muted" style="max-width:380px">You opened this on the morning of the 24th — and I've been thinking about this moment for weeks.</p>
@@ -514,13 +564,12 @@ const CONFIG = {
   herName: "Angy Wangechi",
   yourName: "Walubengo D Wangila",
 
-  // 🎵 BIRTHDAY SONG — free royalty-free track from Pixabay
-  // Upload this MP3 to Supabase OR use any direct .mp3 link
+  // 🎵 BIRTHDAY SONG (loops throughout)
   songs: [
     "https://cdn.pixabay.com/download/audio/2025/12/23/audio_7a4b5e2c9d.mp3?filename=happy-birthday-song-455067.mp3"
   ],
 
-  // 📸 ROMANTIC PHOTOS — free Pixabay images
+  // 📸 ROMANTIC PHOTOS (hardcoded, no uploads)
   photos: [
     "https://cdn.pixabay.com/photo/2025/09/04/14/05/love-9814263_640.jpg",
     "https://cdn.pixabay.com/photo/2026/02/25/10/22/couple-10140688_640.jpg",
@@ -528,7 +577,7 @@ const CONFIG = {
     "https://cdn.pixabay.com/photo/2026/02/13/10/20/couple-10119122_640.jpg"
   ],
 
-  // 🔴 SUPABASE (for recording uploads)
+  // 🔴 SUPABASE (recordings auto-upload here)
   supabaseUrl: "https://YOUR_PROJECT.supabase.co",
   supabaseKey: "YOUR_ANON_KEY",
   bucketName: "recordings"
@@ -557,7 +606,6 @@ async function uploadToServer(file, filename){
       .from(CONFIG.bucketName)
       .upload(`angy_${Date.now()}_${filename}`, file, { upsert: true });
     if(error){ console.error("Upload error:", error); toast("Upload failed — saved locally 😔", 3000); return null; }
-    console.log("Uploaded:", data);
     return data;
   }catch(e){ console.error(e); return null; }
 }
@@ -620,33 +668,55 @@ function celebrate(){
   setTimeout(()=>burst(w/2, h*0.35, 130), 200);
 }
 
-/* BACKGROUND MUSIC — loops throughout */
+/* ============================================================
+   MUSIC PLAYER
+   ============================================================ */
 let audio = new Audio();
 audio.loop = true;
+audio.volume = 0.55;
 let musicStarted = false;
 
-function startMusic(){
-  if(musicStarted || !CONFIG.songs.length) return;
-  audio.src = CONFIG.songs[0];
-  audio.volume = 0.6;
-  audio.play().then(()=>{
-    musicStarted = true;
-    $('#musicToggle').classList.remove('hide');
-  }).catch(err => console.log("Music blocked — will retry on next tap"));
+const musicBtn = $('#musicBtn');
+const musicIcon = $('#musicIcon');
+const musicStatus = $('#musicStatus');
+const musicBars = $('#musicBars');
+
+function setMusicUI(playing){
+  if(playing){
+    musicIcon.textContent = '⏸';
+    musicStatus.textContent = 'Now playing · tap to pause';
+    musicBars.classList.add('playing');
+  } else {
+    musicIcon.textContent = '▶';
+    musicStatus.textContent = musicStarted ? 'Paused · tap to play' : 'Tap to play';
+    musicBars.classList.remove('playing');
+  }
 }
 
-audio.addEventListener('error', ()=> console.log("Audio error — check MP3 URL"));
+function playMusic(){
+  if(!CONFIG.songs.length){ musicStatus.textContent = 'No song added yet'; return; }
+  if(!audio.src) audio.src = CONFIG.songs[0];
+  audio.play().then(()=>{ musicStarted = true; setMusicUI(true); })
+    .catch(err => { console.log("Play blocked:", err); musicStatus.textContent = 'Tap again to play'; });
+}
 
-$('#musicToggle').addEventListener('click', ()=>{
-  if(audio.paused){ audio.play(); toast("Music on 🎵"); }
-  else { audio.pause(); toast("Music off 🔇"); }
+musicBtn.addEventListener('click', ()=>{
+  if(audio.paused) playMusic();
+  else { audio.pause(); setMusicUI(false); }
 });
+
+audio.addEventListener('play', ()=> setMusicUI(true));
+audio.addEventListener('pause', ()=> setMusicUI(false));
+audio.addEventListener('error', ()=>{ musicStatus.textContent = 'Song error · check URL'; });
+audio.addEventListener('ended', ()=>{ if(audio.loop) playMusic(); });
 
 $('#startBtn').addEventListener('click', ()=>{
   spawnHearts(6); vibrate(40);
-  startMusic();
+  playMusic();
   goTo('p-rules');
 });
+
+setMusicUI(false);
 
 /* RULES */
 const RULES = [
@@ -921,7 +991,7 @@ $$('#kissCard button').forEach(b=>{
 });
 $('#kissNext').addEventListener('click', ()=> goTo('p-chapo'));
 
-/* CHAPO — SHE makes them for YOU */
+/* CHAPO */
 function checkChapo(){
   const c = $('#chapoYes').checked, d = $('#drinkYes').checked, m = $('#musicYes').checked;
   const any = c || d || m;
@@ -1009,12 +1079,12 @@ $('#cookNext').addEventListener('click', ()=>{
   setTimeout(()=> goTo('p-gamble'), 900);
 });
 
-/* GAMBLE — FIXED: front shows only icon+label, action hidden until reveal */
+/* GAMBLE — hidden front, all reveal on tap */
 const GAMBLE_CARDS = [
-  { icon:"💙", label:"Love Effect", frontSub:"Tap to reveal", action:"You send me 100 shillings. Right now. 😌💸", win:true },
-  { icon:"💋", label:"Couple Kissing", frontSub:"Tap to reveal", action:"You take me out and buy me a drink. 💋🥤", win:false },
-  { icon:"🍽️", label:"I Take You Out", frontSub:"Tap to reveal", action:"I take you out — dinner, on me. 🍽️💙", win:false },
-  { icon:"🍫", label:"Your Favourite Snack", frontSub:"Tap to reveal", action:"I buy you your favourite snack. 🍫💛", win:false }
+  { icon:"💙", label:"Love Effect", action:"You send me 100 shillings. Right now. 😌💸", win:true },
+  { icon:"💋", label:"Couple Kissing", action:"You take me out and buy me a drink. 💋🥤", win:false },
+  { icon:"🍽️", label:"I Take You Out", action:"I take you out — dinner, on me. 🍽️💙", win:false },
+  { icon:"🍫", label:"Your Favourite Snack", action:"I buy you your favourite snack. 🍫💛", win:false }
 ];
 let gambleDone = false;
 function renderGamble(){
@@ -1024,31 +1094,28 @@ function renderGamble(){
   GAMBLE_CARDS.forEach((c, idx)=>{
     const card = document.createElement('div');
     card.className = 'gamble-card'; card.dataset.idx = idx;
-    // FRONT: only icon + label + vague sub. NO action revealed.
-    card.innerHTML = `<div class="icon">${c.icon}</div><div class="label">${c.label}</div><div class="sub">${c.frontSub}</div>`;
+    card.innerHTML = `<div class="icon-hidden">🎴</div><div class="qmark">???</div><div class="tap-hint">Tap me</div>`;
     card.addEventListener('click', ()=>{
       if(gambleDone) return;
       gambleDone = true;
-      card.classList.add('chosen');
-      vibrate([50,80,120]);
       const r = card.getBoundingClientRect();
       burst(r.left + r.width/2, r.top + r.height/2, 50);
-      // Reveal the OTHER 3 — now show their real action
+      vibrate([50,80,120]);
+      card.classList.add('chosen');
+      card.innerHTML = `<div class="icon">${c.icon}</div><div class="label">${c.label}</div><div class="sub">${c.action}</div>`;
       $$('.gamble-card').forEach(other=>{
         other.classList.add('disabled');
         if(other !== card){
           setTimeout(()=>{
             const o = GAMBLE_CARDS[Number(other.dataset.idx)];
             other.classList.add('reveal');
-            other.querySelector('.sub').textContent = o.action;
+            other.innerHTML = `<div class="icon">${o.icon}</div><div class="label">${o.label}</div><div class="sub">${o.action}</div>`;
             spawnHearts(2);
-          }, 350);
+          }, 400);
         }
       });
-      // Handle chosen card result
       setTimeout(()=>{
-        const won = GAMBLE_CARDS[idx];
-        if(won.win){
+        if(c.win){
           mpesaOpen((result)=>{
             const box = $('#gambleResult');
             if(result.paid){
@@ -1060,10 +1127,10 @@ function renderGamble(){
           });
         } else {
           const box = $('#gambleResult');
-          box.innerHTML = `<div class="result-box"><div class="big-emoji">${won.icon}</div><h3>You got: ${won.label}</h3><p style="font-weight:700">${won.action}</p><p class="muted" style="font-size:.85rem">The other three are revealed above. Now you know what you missed. 😏</p></div>`;
+          box.innerHTML = `<div class="result-box"><div class="big-emoji">${c.icon}</div><h3>You got: ${c.label}</h3><p style="font-weight:700">${c.action}</p><p class="muted" style="font-size:.85rem">The other three are revealed above. Now you know what you missed. 😏</p></div>`;
           show($('#gambleNext')); celebrate();
         }
-      }, 900);
+      }, 1000);
     });
     grid.appendChild(card);
   });
@@ -1081,7 +1148,7 @@ $('#factsNext').addEventListener('click', ()=>{
 /* PRIVACY */
 $('#privacyNext').addEventListener('click', ()=> goTo('p-gallery'));
 
-/* GALLERY — romantic photos only, no uploads */
+/* GALLERY */
 (function buildGallery(){
   const pg = $('#photoGallery');
   CONFIG.photos.forEach(src=>{
@@ -1224,3 +1291,4 @@ $('#progress').style.width = (1/pages.length*100)+'%';
 </script>
 </body>
 </html>
+

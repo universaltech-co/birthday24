@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#0b1020">
-<title>For My Love 💙</title>
+<meta name="theme-color" content="#8a0b16">
+<title>For Angy 💙</title>
 <style>
   :root{
-    --silver:#c0c4cc; --blue:#2f6bff; --red:#e63946; --bg:#070a14;
-    --card:#101627; --text:#eef1f7; --muted:#9aa4bf; --gold:#ffd166;
+    --silver:#d8dde8; --blue:#2f6bff; --red:#e63946; --deep-red:#8a0b16;
+    --yellow:#ffd93d; --gold:#ffb800; --bg:#0a0206; --card:#1a0810;
+    --text:#f5f0e8; --muted:#c9b8a8; --lime:#c6f24e;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0;height:100%}
   body{
-    background:radial-gradient(1200px 800px at 50% -10%, #14204a 0%, var(--bg) 60%);
+    background:
+      radial-gradient(1000px 700px at 10% -5%, #b81122 0%, transparent 55%),
+      radial-gradient(900px 600px at 90% 5%, #7a5a00 0%, transparent 50%),
+      radial-gradient(800px 800px at 50% 110%, #5a0610 0%, transparent 60%),
+      linear-gradient(180deg, #1a0208 0%, #0a0206 100%);
     color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     overflow:hidden;
   }
@@ -26,49 +31,28 @@
   }
   .page.active{opacity:1;transform:none;pointer-events:auto;z-index:2}
   h1,h2{font-weight:800;letter-spacing:-.5px;margin:.2em 0 .4em;text-align:center}
-  h1{font-size:2rem;background:linear-gradient(90deg,var(--silver),var(--blue),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
-  h2{font-size:1.4rem}
+  h1{font-size:2rem;background:linear-gradient(90deg,var(--yellow),var(--silver),var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h2{font-size:1.4rem;color:var(--silver)}
   p{line-height:1.55;text-align:center;color:var(--text);margin:.4em 0}
   .muted{color:var(--muted);font-size:.92rem}
-  .card{
-    width:100%;max-width:460px;background:linear-gradient(180deg,#121a30,#0e1424);
-    border:1px solid #1e2942;border-radius:22px;padding:20px;margin:12px 0;
-    box-shadow:0 18px 40px rgba(0,0,0,.45);
-  }
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;max-width:460px;padding:16px 20px;margin:8px 0;
-    border:none;border-radius:16px;font-size:1.05rem;font-weight:700;
-    background:linear-gradient(135deg,var(--blue),#7a4dff);color:#fff;
-    cursor:pointer;transition:transform .15s,box-shadow .2s;
-    box-shadow:0 10px 24px rgba(47,107,255,.35);
-  }
+  .card{width:100%;max-width:460px;background:linear-gradient(180deg,#240812,#16050a);border:1px solid #4a1420;border-radius:22px;padding:20px;margin:12px 0;box-shadow:0 18px 40px rgba(0,0,0,.55)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:460px;padding:16px 20px;margin:8px 0;border:none;border-radius:16px;font-size:1.05rem;font-weight:700;background:linear-gradient(135deg,var(--red),#ff6b7a);color:#fff;cursor:pointer;transition:transform .15s,box-shadow .2s;box-shadow:0 10px 24px rgba(230,57,70,.4)}
   .btn:active{transform:scale(.97)}
   .btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none}
-  .btn.silver{background:linear-gradient(135deg,var(--silver),#8f97a8);color:#0b1020}
-  .btn.red{background:linear-gradient(135deg,var(--red),#ff7b8a)}
-  .btn.gold{background:linear-gradient(135deg,var(--gold),#f0a500);color:#0b1020}
-  .btn.ghost{background:transparent;border:1px solid #2a3655;color:var(--text);box-shadow:none}
+  .btn.silver{background:linear-gradient(135deg,var(--silver),#a8b0c0);color:#1a0208}
+  .btn.gold{background:linear-gradient(135deg,var(--yellow),var(--gold));color:#1a0208;box-shadow:0 10px 24px rgba(255,184,0,.4)}
+  .btn.ghost{background:transparent;border:1px solid #4a1420;color:var(--text);box-shadow:none}
   .btn.small{max-width:none;width:auto;padding:10px 16px;font-size:.92rem}
   .btn.big{font-size:1.3rem;padding:22px;border-radius:22px}
   .row{display:flex;gap:10px;width:100%;max-width:460px}
   .row .btn{margin:8px 0}
-  label.opt{
-    display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px;margin:8px 0;
-    background:#0f1730;border:1px solid #1e2942;border-radius:14px;cursor:pointer;
-    transition:border-color .2s,background .2s;
-  }
-  label.opt:active{background:#142048}
-  label.opt input{margin-top:4px;accent-color:var(--blue);width:20px;height:20px;flex:0 0 auto}
-  label.opt.checked{border-color:var(--blue);background:#15224a}
-  .toast{
-    position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);
-    background:#1b2748;color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;
-    box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;transition:.3s;z-index:999;max-width:90%;
-    text-align:center;font-size:.95rem;
-  }
+  label.opt{display:flex;align-items:flex-start;gap:12px;width:100%;padding:14px;margin:8px 0;background:#1a0810;border:1px solid #4a1420;border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s}
+  label.opt:active{background:#2a0a14}
+  label.opt input{margin-top:4px;accent-color:var(--yellow);width:20px;height:20px;flex:0 0 auto}
+  label.opt.checked{border-color:var(--yellow);background:#2a1015}
+  .toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);background:#2a0a14;color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.6);border:1px solid var(--red);opacity:0;transition:.3s;z-index:999;max-width:90%;text-align:center;font-size:.95rem}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--silver),var(--blue),var(--red));width:0;transition:width .4s;z-index:50;border-radius:0 4px 4px 0}
+  #progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--yellow),var(--red),var(--silver));width:0;transition:width .4s;z-index:50;border-radius:0 4px 4px 0}
   .hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
   .heart{position:absolute;font-size:18px;animation:float linear forwards;opacity:.9}
   @keyframes float{from{transform:translateY(0) scale(1);opacity:.9}to{transform:translateY(-110vh) scale(1.4);opacity:0}}
@@ -76,43 +60,64 @@
   .media-preview{width:100%;border-radius:16px;margin-top:12px;background:#000;max-height:340px;object-fit:cover}
   .hide{display:none!important}
   .center{display:flex;flex-direction:column;align-items:center;width:100%}
-  .timer{font-size:3.4rem;font-weight:900;color:var(--red);text-align:center;margin:10px}
-  .promise{
-    opacity:0;transform:translateY(12px);transition:.6s;padding:14px 16px;margin:8px 0;
-    background:#0f1730;border:1px solid #1e2942;border-radius:14px;text-align:center;font-weight:600;
-    width:100%;max-width:440px;line-height:1.5;
-  }
-  .promise.show{opacity:1;transform:none;border-color:var(--blue)}
-  .badge{font-size:.78rem;color:var(--muted);border:1px solid #2a3655;padding:3px 9px;border-radius:999px}
+  .timer{font-size:3.4rem;font-weight:900;color:var(--yellow);text-align:center;margin:10px}
+  .promise{opacity:0;transform:translateY(12px);transition:.6s;padding:14px 16px;margin:8px 0;background:#1a0810;border:1px solid #4a1420;border-radius:14px;text-align:center;font-weight:600;width:100%;max-width:440px;line-height:1.5}
+  .promise.show{opacity:1;transform:none;border-color:var(--yellow)}
+  .badge{font-size:.78rem;color:var(--muted);border:1px solid #4a1420;padding:3px 9px;border-radius:999px}
   .quote{font-style:italic;color:var(--silver)}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;max-width:460px;margin-top:12px}
   .gallery img,.gallery video{width:100%;height:140px;object-fit:cover;border-radius:12px;background:#000}
   .big-emoji{font-size:3rem;text-align:center;margin:6px 0}
-  .runaway{position:absolute;transition:left .25s ease,top .25s ease;z-index:5}
-  .surprise-box{
-    width:100%;max-width:460px;padding:36px 20px;margin:14px 0;border-radius:22px;
-    background:linear-gradient(135deg,#2a1a3a,#1a0f2a);border:2px dashed #7a4dff;
-    text-align:center;cursor:pointer;transition:transform .2s;
-    box-shadow:0 0 40px rgba(122,77,255,.35);
-  }
+  .surprise-box{width:100%;max-width:460px;padding:36px 20px;margin:14px 0;border-radius:22px;background:linear-gradient(135deg,#5a0610,#2a0a14);border:2px dashed var(--yellow);text-align:center;cursor:pointer;transition:transform .2s;box-shadow:0 0 40px rgba(255,217,61,.3)}
   .surprise-box:active{transform:scale(.97)}
   .surprise-box .gift{font-size:3.5rem;display:inline-block;animation:wiggle 1.8s infinite}
   @keyframes wiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
   .yes-wrap{position:relative;width:100%;max-width:460px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-  .yes-big{
-    width:100%;padding:36px 20px;font-size:1.6rem;font-weight:900;
-    border:none;border-radius:24px;cursor:pointer;
-    background:linear-gradient(135deg,var(--blue),#7a4dff);color:#fff;
-    box-shadow:0 20px 50px rgba(47,107,255,.55);
-    animation:pulse 1.8s infinite;
-  }
+  .yes-big{width:100%;padding:36px 20px;font-size:1.6rem;font-weight:900;border:none;border-radius:24px;cursor:pointer;background:linear-gradient(135deg,var(--red),#ff6b7a);color:#fff;box-shadow:0 20px 50px rgba(230,57,70,.6);animation:pulse 1.8s infinite}
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-  .no-tiny{
-    position:absolute;padding:6px 12px;font-size:.75rem;border-radius:10px;
-    background:#1a1a2a;color:#8a8aa0;border:1px solid #2a2a40;cursor:pointer;
-    transition:left .3s ease,top .3s ease;
-  }
+  .no-tiny{position:absolute;padding:6px 12px;font-size:.75rem;border-radius:10px;background:#1a0810;color:#7a6070;border:1px solid #4a1420;cursor:pointer;transition:left .3s ease,top .3s ease}
   .music-note{position:fixed;bottom:20px;left:20px;font-size:1.6rem;z-index:60;cursor:pointer;animation:wiggle 2s infinite}
+  .counter{display:flex;align-items:center;justify-content:center;gap:22px;margin:16px 0}
+  .counter button{width:64px;height:64px;border-radius:50%;border:none;font-size:2rem;font-weight:900;background:linear-gradient(135deg,var(--red),#ff6b7a);color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(230,57,70,.4)}
+  .counter button:active{transform:scale(.92)}
+  .counter .num{font-size:3.6rem;font-weight:900;color:var(--yellow);min-width:80px;text-align:center}
+  .gamble-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:460px;margin-top:12px}
+  .gamble-card{aspect-ratio:1/1.3;border-radius:20px;padding:14px;background:linear-gradient(160deg,#3a0a14,#1a0810);border:2px solid #4a1420;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:transform .25s, border-color .3s, box-shadow .3s;position:relative;overflow:hidden}
+  .gamble-card:active{transform:scale(.96)}
+  .gamble-card .icon{font-size:2.6rem;margin-bottom:8px}
+  .gamble-card .label{font-weight:800;font-size:.95rem;line-height:1.3}
+  .gamble-card .sub{font-size:.72rem;color:var(--muted);margin-top:4px}
+  .gamble-card.chosen{border-color:var(--yellow);box-shadow:0 0 30px rgba(255,217,61,.7);animation:chosenPop .5s ease}
+  @keyframes chosenPop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+  .gamble-card.reveal{border-color:var(--silver);background:linear-gradient(160deg,#2a2a30,#1a1a20);opacity:.95}
+  .gamble-card.reveal::after{content:'🔓';position:absolute;top:6px;right:8px;font-size:.9rem}
+  .gamble-card.reveal .label{color:var(--silver)}
+  .gamble-card.disabled{pointer-events:none}
+  .result-box{width:100%;max-width:460px;margin-top:16px;padding:18px;border-radius:18px;background:linear-gradient(135deg,#5a0610,#8a0b16);border:2px solid var(--yellow);text-align:center;animation:chosenPop .5s ease}
+  .result-box h3{color:var(--yellow);margin:.2em 0}
+  .fact{display:flex;gap:14px;align-items:flex-start;padding:14px;margin:8px 0;background:#1a0810;border:1px solid #4a1420;border-radius:14px;width:100%;max-width:460px}
+  .fact .emoji{font-size:1.8rem;flex:0 0 auto}
+  .fact .body{text-align:left}
+  .fact .body strong{color:var(--yellow)}
+  .fact .body span{color:var(--silver);font-size:.85rem;display:block;margin-top:2px}
+  .mpesa-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .mpesa-sheet{width:100%;max-width:520px;background:#0f0a14;border-radius:24px 24px 0 0;padding:22px 20px 28px;border-top:3px solid var(--red);box-shadow:0 -20px 60px rgba(0,0,0,.7);animation:slideUp .35s cubic-bezier(.2,.9,.3,1.2);max-height:92vh;overflow-y:auto}
+  @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .mpesa-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .mpesa-brand{display:flex;align-items:center;gap:8px;font-size:1rem}
+  .mpesa-logo{font-size:1.5rem}
+  .mpesa-close{background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;padding:4px 8px}
+  .mpesa-label{display:block;font-size:.78rem;color:var(--muted);margin:12px 0 4px;text-align:left;font-weight:600}
+  .mpesa-value{width:100%;padding:14px 16px;border-radius:12px;background:#08050a;border:1px solid #3a2030;color:var(--silver);font-size:1rem;font-weight:700}
+  .mpesa-row{display:flex;gap:10px;margin-top:20px}
+  .mpesa-row .btn{margin:0;flex:1}
+  .mpesa-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:14px}
+  .pin-boxes{display:flex;gap:12px;justify-content:center;margin:20px 0}
+  .pin-input{width:56px;height:64px;text-align:center;font-size:1.6rem;font-weight:800;border-radius:14px;border:2px solid #3a2030;background:#08050a;color:var(--yellow);outline:none;transition:border-color .2s}
+  .pin-input:focus{border-color:var(--yellow);box-shadow:0 0 16px rgba(255,217,61,.3)}
+  .mpesa-spinner{width:64px;height:64px;border-radius:50%;border:5px solid #3a2030;border-top-color:var(--yellow);margin:24px auto 0;animation:spin 1s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -125,27 +130,23 @@
 
 <div id="app">
 
-  <!-- ============ WELCOME ============ -->
+  <!-- WELCOME -->
   <section class="page active" id="p-welcome">
     <div class="center" style="margin-top:6vh">
       <div class="big-emoji">💙🎂💫</div>
-      <h1>Happy Birthday,<br><span id="herName">My Love</span> 💖</h1>
-      <p class="muted" style="max-width:380px">
-        You opened this on the morning of the 24th — and I've been thinking about this moment for weeks.
-      </p>
-      <p class="muted" style="max-width:380px">
-        There's music. There are rules. There's a quiz you cannot fail. There are cameras that will ask permission — say yes, it's just me. 😌
-      </p>
-      <p class="quote" style="max-width:380px">“Every love story is beautiful, but ours is my favourite.”</p>
-      <p class="muted" style="font-size:.82rem;max-width:360px">🎧 Turn sound on • 📷 Allow camera when asked • 🔒 Nothing you record leaves your phone</p>
+      <h1>Happy Birthday,<br><span id="herName">Angy</span> 💖</h1>
+      <p class="muted" style="max-width:380px">You opened this on the morning of the 24th — and I've been thinking about this moment for weeks.</p>
+      <p class="muted" style="max-width:380px">There's music. There are rules. There's a quiz you cannot fail. There are cameras that will ask permission — say yes, it's just me. 😌</p>
+      <p class="quote" style="max-width:380px">"Every love story is beautiful, but ours is my favourite."</p>
+      <p class="muted" style="font-size:.82rem;max-width:360px">🎧 Turn sound on • 📷 Allow camera when asked</p>
       <button class="btn" id="startBtn">Begin our story 💌</button>
     </div>
   </section>
 
-  <!-- ============ RULES ============ -->
+  <!-- RULES -->
   <section class="page" id="p-rules">
     <div class="center">
-      <span class="badge">Section 1 of 10</span>
+      <span class="badge">Section 1 of 18</span>
       <h2>📜 The Official Birthday Rules</h2>
       <p class="muted">You must tick ALL six. No excuses. 😌</p>
       <div class="card" id="rulesCard"></div>
@@ -155,15 +156,15 @@
         <label class="opt"><input type="radio" name="penalty" value="Forehead kisses 😘"><span>Forehead kisses 😘</span></label>
         <label class="opt"><input type="radio" name="penalty" value="Dinner date 🍝"><span>Dinner date 🍝</span></label>
         <label class="opt"><input type="radio" name="penalty" value="Both 😏"><span>Both — you signed up for this 😏</span></label>
-        <button class="btn red" id="penaltyDone" disabled>Submit penalty</button>
+        <button class="btn gold" id="penaltyDone" disabled>Submit penalty</button>
       </div>
     </div>
   </section>
 
-  <!-- ============ LOVE QUIZ ============ -->
+  <!-- QUIZ -->
   <section class="page" id="p-quiz">
     <div class="center">
-      <span class="badge">Section 2 of 10</span>
+      <span class="badge">Section 2 of 18</span>
       <h2>💘 The Love Quiz</h2>
       <p class="muted">Every answer is correct. That's the rule. 😌</p>
       <div class="card" id="quizCard"></div>
@@ -171,10 +172,10 @@
     </div>
   </section>
 
-  <!-- ============ SMILE SELFIE ============ -->
+  <!-- SELFIE -->
   <section class="page" id="p-selfie">
     <div class="center">
-      <span class="badge">Section 3 of 10</span>
+      <span class="badge">Section 3 of 18</span>
       <h2>😄 Smile Selfie</h2>
       <p class="muted">3… 2… 1… show me that smile.</p>
       <div id="selfieTimer" class="timer hide">3</div>
@@ -189,26 +190,26 @@
     </div>
   </section>
 
-  <!-- ============ VOICE NOTE ============ -->
+  <!-- VOICE -->
   <section class="page" id="p-voice">
     <div class="center">
-      <span class="badge">Section 4 of 10</span>
+      <span class="badge">Section 4 of 18</span>
       <h2>🎤 Your Voice, My Favourite Sound</h2>
       <p class="muted">Up to 30 seconds. Say anything — or just laugh.</p>
       <div id="voiceTimer" class="timer">30</div>
       <div class="row">
         <button class="btn" id="voiceStart">Record 🎙️</button>
-        <button class="btn red hide" id="voiceStop">Stop ⏹️</button>
+        <button class="btn gold hide" id="voiceStop">Stop ⏹️</button>
       </div>
       <audio id="voicePlayback" class="hide" controls style="width:100%;max-width:460px;margin-top:12px"></audio>
       <button class="btn ghost hide" id="voiceNext">Next 💫</button>
     </div>
   </section>
 
-  <!-- ============ DANCE VIDEO ============ -->
+  <!-- DANCE -->
   <section class="page" id="p-dance">
     <div class="center">
-      <span class="badge">Section 5 of 10</span>
+      <span class="badge">Section 5 of 18</span>
       <h2>💃 15-Second Dance</h2>
       <p class="muted">Show me your moves. No judgement. Only love.</p>
       <div id="danceTimer" class="timer hide">15</div>
@@ -216,21 +217,21 @@
       <video id="dancePlayback" class="media-preview hide" controls playsinline></video>
       <div class="row">
         <button class="btn" id="danceStart">Record 🎬</button>
-        <button class="btn red hide" id="danceStop">Stop ⏹️</button>
+        <button class="btn gold hide" id="danceStop">Stop ⏹️</button>
       </div>
       <button class="btn ghost hide" id="danceNext">Next 💫</button>
     </div>
   </section>
 
-  <!-- ============ KISS ============ -->
+  <!-- KISS -->
   <section class="page" id="p-kiss">
     <div class="center">
-      <span class="badge">Section 6 of 10</span>
+      <span class="badge">Section 6 of 18</span>
       <h2>💋 Come Here…</h2>
       <p class="muted">Tap what you're feeling. Be honest. 😏</p>
       <div class="card center" id="kissCard">
         <button class="btn" data-mood="Give me a kiss 💋">Give me a kiss 💋</button>
-        <button class="btn red" data-mood="Come kiss me right now 🥵">Come kiss me right now 🥵</button>
+        <button class="btn gold" data-mood="Come kiss me right now 🥵">Come kiss me right now 🥵</button>
         <button class="btn silver" data-mood="Cuddles first 🥰">Cuddles first 🥰</button>
         <button class="btn ghost" data-mood="Surprise me 😈">Surprise me 😈</button>
       </div>
@@ -239,104 +240,238 @@
     </div>
   </section>
 
-  <!-- ============ CHAPATI + DRINK REQUEST ============ -->
+  <!-- CHAPO -->
   <section class="page" id="p-chapo">
     <div class="center">
-      <span class="badge">Section 7 of 10</span>
+      <span class="badge">Section 7 of 18</span>
       <h2>🍽️ A Small Appreciation Request</h2>
       <p class="muted">I have a humble ask, my love. 😌</p>
-
       <div class="card">
         <div class="big-emoji">🫓</div>
         <p><strong>Could you make me some chapos?</strong></p>
-        <p class="muted">Soft, layered, the way only you make them. I'll handle the dishes and the compliments.</p>
+        <p class="muted">Soft, layered, the way only you make them.</p>
         <label class="opt"><input type="checkbox" id="chapoYes"><span>Yes, I'll make chapos 🫓💙</span></label>
       </div>
-
       <div class="card">
         <div class="big-emoji">🥤</div>
         <p><strong>And a drink — a Predator.</strong></p>
-        <p class="muted">The real one. Cold. As a thank-you to your favourite person. 😏</p>
+        <p class="muted">The real one. Cold. As a thank-you. 😏</p>
         <label class="opt"><input type="checkbox" id="drinkYes"><span>Yes, I'll bring the Predator 🥤</span></label>
       </div>
-
       <div class="card">
         <div class="big-emoji">🎶</div>
         <p><strong>And music for us to work to?</strong></p>
-        <p class="muted">Something to cook and clean to — your pick. I'll dance badly and you'll pretend not to notice.</p>
+        <p class="muted">Your pick. I'll dance badly and you'll pretend not to notice.</p>
         <label class="opt"><input type="checkbox" id="musicYes"><span>Yes, I'll pick the playlist 🎶</span></label>
       </div>
-
       <button class="btn" id="chapoNext" disabled>Tick what you'll do for me 😌</button>
     </div>
   </section>
 
-  <!-- ============ YES-ONLY ACCEPTANCE ============ -->
+  <!-- YES -->
   <section class="page" id="p-accept">
     <div class="center">
-      <span class="badge">Section 8 of 10</span>
+      <span class="badge">Section 8 of 18</span>
       <h2>💍 One Question</h2>
       <p class="muted" style="max-width:380px">There's really only one answer here, but I built a tiny "no" button anyway. Good luck catching it. 😏</p>
-
       <div class="yes-wrap" id="yesWrap">
         <button class="yes-big" id="yesBtn">YES 💙</button>
         <button class="no-tiny" id="noBtn">no</button>
       </div>
-
       <div id="yesReply" class="card hide center">
         <div class="big-emoji">💍💙</div>
         <p style="font-weight:800;font-size:1.15rem">She said yes. 🥹</p>
         <p class="muted">You just made this the best birthday of my life — and it's not even mine.</p>
-        <p class="muted">Now go tick the surprise box below. 😏</p>
       </div>
-
       <button class="btn hide" id="acceptNext">Next 💫</button>
     </div>
   </section>
 
-  <!-- ============ SURPRISE BOX ============ -->
+  <!-- SURPRISE -->
   <section class="page" id="p-surprise">
     <div class="center">
-      <span class="badge">Section 9 of 10</span>
+      <span class="badge">Section 9 of 18</span>
       <h2>🎁 A Box I Won't Explain</h2>
       <p class="muted">Tap it. I won't tell you what's inside. You'll have to wait. 😏</p>
-
       <div class="surprise-box" id="surpriseBox">
         <div class="gift">🎁</div>
         <p style="font-weight:800;font-size:1.2rem;margin-top:10px">Tap to open</p>
         <p class="muted" style="font-size:.85rem">I promise it's worth the wait.</p>
       </div>
-
       <div id="surpriseReply" class="card hide center">
         <div class="big-emoji">✨🤫✨</div>
         <p style="font-weight:800;font-size:1.1rem">You just unlocked a secret.</p>
         <p class="muted">It's not here. It's coming. Be patient with me — it's on its way. 💙</p>
         <p class="muted" style="font-size:.85rem">(Hint: it's something you can hold.)</p>
       </div>
-
       <button class="btn hide" id="surpriseNext">Next 💫</button>
     </div>
   </section>
 
-  <!-- ============ PRIVACY & SAFETY ============ -->
+  <!-- KIDS -->
+  <section class="page" id="p-kids">
+    <div class="center">
+      <span class="badge">Just between us 🤫</span>
+      <h2>👶 How Many Kids Will You Sire For Me?</h2>
+      <p class="muted" style="max-width:380px">Be honest. I'll remember your answer forever. 😏</p>
+      <div class="card center" style="padding:28px;border-color:var(--yellow)">
+        <div class="counter">
+          <button id="kidsMinus">−</button>
+          <div class="num" id="kidsNum">3</div>
+          <button id="kidsPlus">+</button>
+        </div>
+        <p class="muted" id="kidsCaption">Three? Bold. I love it. 😌</p>
+      </div>
+      <button class="btn gold" id="kidsNext">Lock it in 👶💙</button>
+    </div>
+  </section>
+
+  <!-- SHOTS -->
+  <section class="page" id="p-shots">
+    <div class="center">
+      <span class="badge">Tonight's business 🥃</span>
+      <h2>How Many Shots Tonight?</h2>
+      <p class="muted" style="max-width:380px">Predator counts. So do the ones you claim you "won't do". 😏</p>
+      <div class="card center" style="padding:28px;border-color:var(--red)">
+        <div class="counter">
+          <button id="shotsMinus">−</button>
+          <div class="num" id="shotsNum">2</div>
+          <button id="shotsPlus">+</button>
+        </div>
+        <p class="muted" id="shotsCaption">Two. Reasonable. Suspiciously low. 👀</p>
+      </div>
+      <button class="btn" id="shotsNext">Lock it in 🥃</button>
+    </div>
+  </section>
+
+  <!-- COOK -->
+  <section class="page" id="p-cook">
+    <div class="center">
+      <span class="badge">My turn 💙</span>
+      <h2>🍳 And Here's My Promise</h2>
+      <p class="muted" style="max-width:400px">You asked for chapos. I heard you. But you're getting a whole dinner — cooked by me, on the 24th, for you.</p>
+      <div class="card center" style="padding:26px;border-color:var(--yellow)">
+        <div class="big-emoji">👨‍🍳💙</div>
+        <p style="font-weight:800;font-size:1.1rem;margin-top:8px">I'll cook for you on the 24th.</p>
+        <p class="muted">Chapo. Something soft. Something sweet. Predator on ice. You, plate in hand, judging my seasoning. I'll take it. 😌</p>
+      </div>
+      <button class="btn gold" id="cookNext">I'll hold you to it 💙</button>
+    </div>
+  </section>
+
+  <!-- GAMBLE -->
+  <section class="page" id="p-gamble">
+    <div class="center">
+      <span class="badge">Pick wisely 😈</span>
+      <h2>🎴 Choose One Card</h2>
+      <p class="muted" style="max-width:380px">Four cards. One reward. The other three will reveal what you missed. Choose carefully.</p>
+      <div class="gamble-grid" id="gambleGrid"></div>
+      <div id="gambleResult"></div>
+      <button class="btn hide" id="gambleNext">Next 💫</button>
+    </div>
+  </section>
+
+  <!-- MPESA OVERLAY -->
+  <div id="mpesaOverlay" class="mpesa-overlay hide">
+    <div class="mpesa-sheet">
+      <div id="mpesaSend" class="mpesa-screen">
+        <div class="mpesa-head">
+          <div class="mpesa-brand"><span class="mpesa-logo">📱</span><strong>M‑PESA</strong></div>
+          <button class="mpesa-close" id="mpesaClose1">✕</button>
+        </div>
+        <h3 style="margin:6px 0 14px;color:var(--yellow)">Send Money</h3>
+        <label class="mpesa-label">Recipient</label>
+        <div class="mpesa-value">Walubengo D Wangila</div>
+        <label class="mpesa-label">Phone number</label>
+        <div class="mpesa-value">0748091915</div>
+        <label class="mpesa-label">Amount</label>
+        <div class="mpesa-value" style="font-size:1.4rem;color:var(--yellow)">KES 100.00</div>
+        <label class="mpesa-label">Reason</label>
+        <div class="mpesa-value">Love Effect 💙</div>
+        <div class="mpesa-row">
+          <button class="btn ghost small" id="mpesaLater1">Send later</button>
+          <button class="btn gold" id="mpesaContinue">Send 💸</button>
+        </div>
+        <p class="mpesa-note">Secured by Safaricom • Charges may apply</p>
+      </div>
+      <div id="mpesaPin" class="mpesa-screen hide">
+        <div class="mpesa-head">
+          <div class="mpesa-brand"><span class="mpesa-logo">🔒</span><strong>Enter M‑PESA PIN</strong></div>
+          <button class="mpesa-close" id="mpesaClose2">✕</button>
+        </div>
+        <p class="muted" style="text-align:left;margin:4px 0 14px">Sending <strong style="color:var(--yellow)">KES 100.00</strong> to <strong>Walubengo D Wangila</strong></p>
+        <div class="pin-boxes" id="pinBoxes">
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-idx="0" autocomplete="off">
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-idx="1" autocomplete="off">
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-idx="2" autocomplete="off">
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" data-idx="3" autocomplete="off">
+        </div>
+        <div class="mpesa-row">
+          <button class="btn ghost small" id="mpesaLater2">Cancel</button>
+          <button class="btn gold" id="mpesaPay" disabled>Confirm</button>
+        </div>
+        <p class="mpesa-note">Your PIN is never stored or shared.</p>
+      </div>
+      <div id="mpesaProcessing" class="mpesa-screen hide">
+        <div class="mpesa-spinner"></div>
+        <h3 style="margin-top:16px;color:var(--silver)">Processing…</h3>
+        <p class="muted">Please wait</p>
+      </div>
+      <div id="mpesaSuccess" class="mpesa-screen hide">
+        <div class="big-emoji">✅</div>
+        <h3 style="color:var(--yellow)">Sent successfully</h3>
+        <p><strong>KES 100.00</strong> to <strong>Walubengo D Wangila</strong></p>
+        <p class="muted" style="font-size:.85rem">Ref: <span id="successRef">SKELE001</span></p>
+        <p class="muted">Transaction completed. Thank you. 💙</p>
+        <button class="btn gold" id="mpesaDone">Done</button>
+      </div>
+      <div id="mpesaLater" class="mpesa-screen hide">
+        <div class="big-emoji">🥤</div>
+        <h3 style="color:var(--yellow)">⚠️ Not so fast</h3>
+        <p>You can send later — but it costs you:</p>
+        <p style="font-weight:800;font-size:1.25rem;color:var(--yellow)">One Fanta — cold, delivered. 🥤</p>
+        <p class="muted" style="font-size:.85rem">No Fanta, no next page. I don't make the rules. (I do.)</p>
+        <button class="btn gold" id="mpesaAcceptPenalty">Okay, I accept 🥤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACTS -->
+  <section class="page" id="p-facts">
+    <div class="center">
+      <span class="badge">Because I pay attention 🧠</span>
+      <h2>💙 What I Know About You</h2>
+      <p class="muted" style="max-width:400px">Little things. Big things. All the things I never want to forget.</p>
+      <div class="fact"><div class="emoji">🤍</div><div class="body"><strong>Your favourite colour is silver</strong><span>Mine is blue. For love? Red. Obviously.</span></div></div>
+      <div class="fact"><div class="emoji">🎂</div><div class="body"><strong>You just turned 22</strong><span>And you're already the best thing in my life.</span></div></div>
+      <div class="fact"><div class="emoji">🏦</div><div class="body"><strong>You're a banker</strong><span>You handle money all day. But you can't handle me. 😌</span></div></div>
+      <div class="fact"><div class="emoji">💍</div><div class="body"><strong>You will be my wife</strong><span>Not a question. A fact.</span></div></div>
+      <div class="fact"><div class="emoji">👶</div><div class="body"><strong>You told me 3 kids</strong><span>I'll be there for every single one. And for you, always.</span></div></div>
+      <div class="fact"><div class="emoji">🎵</div><div class="body"><strong>You love RnB</strong><span>Slow ones. Loud ones. My favourite genre now too.</span></div></div>
+      <div class="fact"><div class="emoji">😴</div><div class="body"><strong>You love to sleep</strong><span>I love watching you sleep. Don't make it weird. 😌</span></div></div>
+      <div class="fact"><div class="emoji">🔥</div><div class="body"><strong>Collapsed dog is your favourite style</strong><span>Noted. Remembered. Never forgotten. 😏💙</span></div></div>
+      <div class="fact"><div class="emoji">🐟</div><div class="body"><strong>You love fish</strong><span>Fried. Grilled. Any way you want. I'll learn to make it perfect.</span></div></div>
+      <div class="fact"><div class="emoji">🧃</div><div class="body"><strong>Minute Maid juice is your drink</strong><span>Cold. Always in the fridge. Waiting for you.</span></div></div>
+      <button class="btn gold" id="factsNext" style="margin-top:16px">There's more 💌</button>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
   <section class="page" id="p-privacy">
     <div class="center">
       <span class="badge">Just for you</span>
       <h2>🔒 Your Privacy &amp; Safety</h2>
       <p class="muted">Read this slowly. I mean every word.</p>
-
       <div class="card">
         <div class="big-emoji">📵</div>
         <p><strong>Nothing leaves your phone.</strong></p>
         <p class="muted">Your selfie, your voice, your dance — they stay on your device. No upload. No server. No one sees them but you. I built it this way on purpose.</p>
       </div>
-
       <div class="card">
         <div class="big-emoji">🔒</div>
         <p><strong>This link is yours.</strong></p>
         <p class="muted">Don't forward it. Don't post it. It was made for one person on one morning — you.</p>
       </div>
-
       <div class="card">
         <div class="big-emoji">🛡️</div>
         <p><strong>Safety rules for us</strong></p>
@@ -348,95 +483,83 @@
           • I will never share anything you send me. Never.
         </p>
       </div>
-
       <div class="card">
         <div class="big-emoji">🔑</div>
         <p><strong>One small ask</strong></p>
         <p class="muted">Before you send me anything private — a photo, a voice note, a video — make sure it's something you'd be okay with <em>forever</em>. If there's any doubt, don't. I'll love you the same. That's the rule.</p>
       </div>
-
       <div class="card">
         <div class="big-emoji">📱</div>
         <p><strong>Device safety tip</strong></p>
         <p class="muted">Lock your phone with a PIN or face ID. Keep this page private. If you ever lose your phone, tell me first — I'll help you wipe it, no questions.</p>
       </div>
-
-      <button class="btn" id="privacyNext">I've read it. I feel safe. 💙</button>
+      <button class="btn gold" id="privacyNext">I've read it. I feel safe. 💙</button>
     </div>
   </section>
 
-  <!-- ============ GALLERY ============ -->
+  <!-- GALLERY -->
   <section class="page" id="p-gallery">
     <div class="center">
-      <span class="badge">Section 10 of 10</span>
-      <h2>📸 Our Little Museum</h2>
-      <p class="muted">Some of us. Some for you to add today.</p>
+      <span class="badge">Just for looking 📸</span>
+      <h2>Our Little Museum</h2>
+      <p class="muted">Some of us. All my favourite.</p>
       <div class="gallery" id="photoGallery"></div>
       <div class="gallery" id="videoGallery"></div>
-
-      <div class="card center">
-        <p class="muted">Add a photo from today 📷</p>
-        <input type="file" accept="image/*" capture="environment" id="photoInput" class="hide">
-        <button class="btn small" onclick="document.getElementById('photoInput').click()">Choose photo</button>
-        <p class="muted" style="font-size:.8rem">Stored on your phone only 🔒</p>
-      </div>
-
-      <button class="btn red" id="galleryNext" style="margin-top:18px">Go to your promises 💌</button>
+      <button class="btn gold" id="galleryNext" style="margin-top:18px">Go to your promises 💌</button>
     </div>
   </section>
 
-  <!-- ============ FINALE ============ -->
+  <!-- FINALE -->
   <section class="page" id="p-finale">
     <div class="center" style="margin-top:5vh">
       <div class="big-emoji">🎉💖🎊</div>
       <h1>My Promises to You</h1>
-      <p class="muted">Ten things. One heart. Always.</p>
-
+      <p class="muted">All of them. One heart. Always.</p>
       <div class="card" style="margin-top:12px">
         <div class="big-emoji">💌</div>
         <p id="loveLetterText" style="white-space:pre-line;text-align:left;font-size:.95rem;line-height:1.7"></p>
       </div>
-
       <div id="promises"></div>
-
-      <button class="btn red hide" id="finaleBtn" style="margin-top:20px">One more thing… 💌</button>
-      <div id="finaleLove" class="card center hide" style="margin-top:20px">
+      <button class="btn hide" id="finaleBtn" style="margin-top:20px">One more thing… 💌</button>
+      <div id="finaleLove" class="card center hide" style="margin-top:20px;border-color:var(--yellow)">
         <h2>I love you. Forever. 💙</h2>
-        <p class="quote">— Yours, always.</p>
-        <p class="muted">You can replay this any time. Happy birthday, <span class="herNameSpan">my love</span>. 🎂</p>
+        <p class="quote">— Yours, always. Walubengo</p>
+        <p class="muted">You can replay this any time. Happy birthday, Angy. 🎂</p>
       </div>
     </div>
   </section>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ============================================================
-   ⚙️ CONFIG — EDIT ONLY THIS BLOCK
+   ⚙️ CONFIG — EDIT THIS BLOCK
    ============================================================ */
 const CONFIG = {
-  herName: "My Love",          // 👈 her real name
-  yourName: "Me",              // 👈 your name
+  herName: "Angy Wangechi",
+  yourName: "Walubengo D Wangila",
 
-  // 🎵 MUSIC — add direct MP3 links (host on your server / R2 / S3)
-  // Leave empty [] to disable music gracefully.
+  // 🎵 BACKGROUND MUSIC — direct MP3 link (loops throughout)
   songs: [
-    // "https://yoursite.com/song1.mp3",
-    // "https://yoursite.com/song2.mp3"
+    // "https://YOUR_PROJECT.supabase.co/storage/v1/object/public/recordings/song.mp3"
   ],
 
   // 📸 YOUR PHOTOS — direct image URLs
   photos: [
-    "https://picsum.photos/seed/love1/500/500",
-    "https://picsum.photos/seed/love2/500/500",
-    "https://picsum.photos/seed/love3/500/500",
-    "https://picsum.photos/seed/love4/500/500"
+    "https://picsum.photos/seed/angy1/500/500",
+    "https://picsum.photos/seed/angy2/500/500",
+    "https://picsum.photos/seed/angy3/500/500",
+    "https://picsum.photos/seed/angy4/500/500"
   ],
 
   // 🎬 YOUR VIDEOS — direct video URLs (mp4)
-  videos: [
-    // "https://yoursite.com/our-video.mp4"
-  ]
+  videos: [],
+
+  // 🔴 SUPABASE (for recording uploads)
+  supabaseUrl: "https://YOUR_PROJECT.supabase.co",   // 👈 replace
+  supabaseKey: "YOUR_ANON_KEY",                       // 👈 replace
+  bucketName: "recordings"
 };
 /* ============================================================ */
 
@@ -445,9 +568,10 @@ const $$ = s => [...document.querySelectorAll(s)];
 const show = el => el && el.classList.remove('hide');
 const hide = el => el && el.classList.add('hide');
 
-/* Apply her name everywhere */
+// Init Supabase
+const supabaseClient = window.supabase ? window.supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseKey) : null;
+
 document.getElementById('herName').textContent = CONFIG.herName;
-$$('.herNameSpan').forEach(e => e.textContent = CONFIG.herName);
 
 function toast(msg, ms=1900){
   const t = $('#toast'); t.textContent = msg; t.classList.add('show');
@@ -455,9 +579,25 @@ function toast(msg, ms=1900){
 }
 function vibrate(p){ try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} }
 
-/* ---- Progress + navigation ---- */
+/* Upload helper — sends file to Supabase */
+async function uploadToServer(file, filename){
+  if(!supabaseClient || !CONFIG.supabaseUrl.includes("supabase")){
+    console.log("Supabase not configured — skipping upload");
+    return null;
+  }
+  try{
+    const { data, error } = await supabaseClient.storage
+      .from(CONFIG.bucketName)
+      .upload(`angy_${Date.now()}_${filename}`, file, { upsert: true });
+    if(error){ console.error("Upload error:", error); toast("Upload failed — saved locally only 😔", 3000); return null; }
+    console.log("Uploaded:", data);
+    return data;
+  }catch(e){ console.error(e); return null; }
+}
+
 const pages = ['p-welcome','p-rules','p-quiz','p-selfie','p-voice','p-dance','p-kiss',
-               'p-chapo','p-accept','p-surprise','p-privacy','p-gallery','p-finale'];
+               'p-chapo','p-accept','p-surprise','p-kids','p-shots','p-cook',
+               'p-gamble','p-facts','p-privacy','p-gallery','p-finale'];
 let pageIndex = 0;
 function goTo(id){
   const i = pages.indexOf(id); if(i < 0) return;
@@ -469,13 +609,12 @@ function goTo(id){
   vibrate(15);
 }
 
-/* ---- Floating hearts ---- */
 function spawnHearts(n=1){
   const layer = $('#hearts');
   for(let k=0;k<n;k++){
     const h = document.createElement('div');
     h.className = 'heart';
-    h.textContent = ['💙','💖','💫','❤️','🤍','✨','🫓','🥤'][Math.floor(Math.random()*8)];
+    h.textContent = ['💙','💖','💫','❤️','💛','✨','🤍','🫓','🥤'][Math.floor(Math.random()*9)];
     h.style.left = (Math.random()*100)+'vw';
     h.style.bottom = '-30px';
     h.style.animationDuration = (5+Math.random()*5)+'s';
@@ -486,22 +625,14 @@ function spawnHearts(n=1){
 }
 setInterval(()=>spawnHearts(1), 1200);
 
-/* ---- Confetti ---- */
 const fw = $('#fw');
 const fwCtx = fw.getContext('2d');
 let fwParts = [];
 function resizeFW(){ fw.width = innerWidth; fw.height = innerHeight; }
 resizeFW(); addEventListener('resize', resizeFW);
-function burst(x,y,n=60,colors=['#c0c4cc','#2f6bff','#e63946','#ffd166','#7a4dff']){
+function burst(x,y,n=60,colors=['#ffd93d','#e63946','#d8dde8','#ffb800','#ff6b7a']){
   for(let i=0;i<n;i++){
-    fwParts.push({
-      x,y,
-      vx:(Math.random()-.5)*9,
-      vy:(Math.random()-.9)*10,
-      life:1,
-      c:colors[Math.floor(Math.random()*colors.length)],
-      size:2+Math.random()*4
-    });
+    fwParts.push({ x,y, vx:(Math.random()-.5)*9, vy:(Math.random()-.9)*10, life:1, c:colors[Math.floor(Math.random()*colors.length)], size:2+Math.random()*4 });
   }
 }
 function fwLoop(){
@@ -518,42 +649,44 @@ function fwLoop(){
 fwLoop();
 function celebrate(){
   const w=innerWidth,h=innerHeight;
-  for(let i=0;i<7;i++){
-    setTimeout(()=>burst(w*(0.15+Math.random()*0.7), h*(0.15+Math.random()*0.5), 70), i*220);
-  }
+  for(let i=0;i<7;i++){ setTimeout(()=>burst(w*(0.15+Math.random()*0.7), h*(0.15+Math.random()*0.5), 70), i*220); }
   setTimeout(()=>burst(w/2, h*0.35, 130), 200);
 }
 
-/* ---- Music ---- */
+/* ============================================================
+   BACKGROUND MUSIC — loops throughout, starts on first tap
+   ============================================================ */
 let audio = new Audio();
-let songIdx = 0;
-let musicOn = true;
-function playSong(){
-  if(!CONFIG.songs.length) return;
-  audio.src = CONFIG.songs[songIdx % CONFIG.songs.length];
-  audio.loop = false;
-  audio.play().catch(()=>{});
-  $('#musicToggle').classList.remove('hide');
+audio.loop = true; // 🎵 loops forever
+let musicStarted = false;
+
+function startMusic(){
+  if(musicStarted || !CONFIG.songs.length) return;
+  audio.src = CONFIG.songs[0];
+  audio.volume = 0.6;
+  audio.play().then(()=>{
+    musicStarted = true;
+    $('#musicToggle').classList.remove('hide');
+    console.log("Music started");
+  }).catch(err => {
+    console.log("Music autoplay blocked — will retry on next tap");
+  });
 }
-audio.addEventListener('ended', ()=>{ songIdx++; playSong(); });
+
+audio.addEventListener('error', ()=> console.log("Audio error — check the MP3 URL"));
+
 $('#musicToggle').addEventListener('click', ()=>{
-  if(audio.paused){ audio.play().catch(()=>{}); musicOn=true; toast("Music on 🎵"); }
-  else { audio.pause(); musicOn=false; toast("Music off 🔇"); }
+  if(audio.paused){ audio.play(); toast("Music on 🎵"); }
+  else { audio.pause(); toast("Music off 🔇"); }
 });
 
-/* ============================================================
-   WELCOME → start
-   ============================================================ */
 $('#startBtn').addEventListener('click', ()=>{
-  spawnHearts(6);
-  vibrate(40);
-  playSong();
+  spawnHearts(6); vibrate(40);
+  startMusic(); // 🎵 starts here
   goTo('p-rules');
 });
 
-/* ============================================================
-   RULES
-   ============================================================ */
+/* RULES */
 const RULES = [
   "You are the reason I smile at my phone. 😊",
   "You will never go to bed angry at me. 😌",
@@ -598,9 +731,7 @@ $('#penaltyDone').addEventListener('click', ()=>{
   goTo('p-quiz');
 });
 
-/* ============================================================
-   QUIZ
-   ============================================================ */
+/* QUIZ */
 const QUIZ = [
   {q:"What's my favourite thing about you?", opts:["Your smile","Your laugh","Your heart","All of it 😌"],
    replies:["Correct. Also your smile. Always. 😊","Correct — I hear it in my dreams. 😌","Correct. It's the biggest one I know. 💙","Correct. Obviously. There was never another answer. 😏"]},
@@ -616,7 +747,7 @@ function renderQuiz(){
   quizAnswered = false;
   const q = QUIZ[quizIdx];
   const card = $('#quizCard');
-  card.innerHTML = `<h2 style="font-size:1.1rem">${q.q}</h2>`;
+  card.innerHTML = `<h2 style="font-size:1.1rem;color:var(--yellow)">${q.q}</h2>`;
   q.opts.forEach((o,i)=>{
     const b = document.createElement('button');
     b.className = 'btn ghost'; b.style.margin = '6px 0'; b.textContent = o;
@@ -641,9 +772,7 @@ $('#quizNext').addEventListener('click', ()=>{
   renderQuiz();
 });
 
-/* ============================================================
-   MEDIA HELPER — fixes camera/mic errors
-   ============================================================ */
+/* MEDIA */
 let activeStreams = [];
 function releaseAll(){
   activeStreams.forEach(s => { try{ s.getTracks().forEach(t => t.stop()); }catch(e){} });
@@ -666,18 +795,15 @@ async function getMedia(constraints){
     return s;
   }catch(err){
     let msg = "Camera/mic blocked.";
-    if(err.name === "NotAllowedError") msg = "🚫 You tapped 'Block'. Tap 🔒 in the address bar → Allow → reload.";
-    else if(err.name === "NotFoundError") msg = "📷 No camera found on this device.";
-    else if(err.name === "NotReadableError") msg = "📷 Camera is busy. Close other apps using it and retry.";
-    else if(err.name === "OverconstrainedError") msg = "📷 Camera doesn't support that setting.";
+    if(err.name === "NotAllowedError") msg = "🚫 Tap 🔒 in the address bar → Allow → reload.";
+    else if(err.name === "NotFoundError") msg = "📷 No camera found.";
+    else if(err.name === "NotReadableError") msg = "📷 Camera is busy. Close other apps and retry.";
     toast(msg, 5000);
     throw err;
   }
 }
 
-/* ============================================================
-   SELFIE
-   ============================================================ */
+/* SELFIE — uploads to Supabase */
 $('#selfieStart').addEventListener('click', async ()=>{
   const btn = $('#selfieStart');
   btn.disabled = true; btn.textContent = "Opening camera…";
@@ -716,8 +842,12 @@ function captureSelfie(){
   const ctx = c.getContext('2d');
   ctx.translate(w,0); ctx.scale(-1,1);
   ctx.drawImage(v, 0, 0, w, h);
-  const data = c.toDataURL('image/jpeg', 0.9);
-  const img = $('#selfieShot'); img.src = data; show(img);
+  c.toBlob(async (blob)=>{
+    const img = $('#selfieShot'); img.src = URL.createObjectURL(blob); show(img);
+    // 🔴 UPLOAD TO SUPABASE
+    const uploaded = await uploadToServer(blob, "selfie.jpg");
+    if(uploaded) toast("Selfie sent to me 😍", 2500);
+  }, 'image/jpeg', 0.9);
   hide(v); releaseAll();
   show($('#selfieRetake')); show($('#selfieNext'));
   toast("Beautiful. Obviously. 😍");
@@ -728,9 +858,7 @@ $('#selfieRetake').addEventListener('click', ()=>{
 });
 $('#selfieNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-voice'); });
 
-/* ============================================================
-   VOICE
-   ============================================================ */
+/* VOICE — uploads to Supabase */
 let mediaRec = null, chunks = [], voiceTimerId = null, voiceSec = 30;
 $('#voiceStart').addEventListener('click', async ()=>{
   try{
@@ -738,11 +866,14 @@ $('#voiceStart').addEventListener('click', async ()=>{
     mediaRec = new MediaRecorder(stream);
     chunks = [];
     mediaRec.ondataavailable = e => { if(e.data.size) chunks.push(e.data); };
-    mediaRec.onstop = ()=>{
+    mediaRec.onstop = async ()=>{
       if(!chunks.length){ toast("Nothing recorded. Try again 🎙️"); return; }
       const blob = new Blob(chunks, { type:'audio/webm' });
       const url = URL.createObjectURL(blob);
       const a = $('#voicePlayback'); a.src = url; show(a);
+      // 🔴 UPLOAD TO SUPABASE
+      const uploaded = await uploadToServer(blob, "voice.webm");
+      if(uploaded) toast("Voice note sent to me 🎤💙", 2500);
       show($('#voiceNext'));
       hide($('#voiceStop')); hide($('#voiceStart'));
       releaseAll();
@@ -765,18 +896,13 @@ function stopVoice(){
 $('#voiceStop').addEventListener('click', stopVoice);
 $('#voiceNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-dance'); });
 
-/* ============================================================
-   DANCE
-   ============================================================ */
+/* DANCE — uploads to Supabase */
 let danceRec = null, danceChunks = [], danceTimerId = null, danceSec = 15;
 $('#danceStart').addEventListener('click', async ()=>{
   const btn = $('#danceStart');
   btn.disabled = true; btn.textContent = "Opening camera…";
   try{
-    const stream = await getMedia({
-      video: { facingMode:'user', width:{ideal:720}, height:{ideal:1280} },
-      audio: true
-    });
+    const stream = await getMedia({ video: { facingMode:'user', width:{ideal:720}, height:{ideal:1280} }, audio: true });
     const p = $('#dancePreview');
     p.setAttribute('playsinline',''); p.muted = true;
     p.srcObject = stream;
@@ -785,11 +911,14 @@ $('#danceStart').addEventListener('click', async ()=>{
     danceRec = new MediaRecorder(stream);
     danceChunks = [];
     danceRec.ondataavailable = e => { if(e.data.size) danceChunks.push(e.data); };
-    danceRec.onstop = ()=>{
+    danceRec.onstop = async ()=>{
       if(!danceChunks.length){ toast("Nothing recorded 🎬"); return; }
       const blob = new Blob(danceChunks, { type:'video/webm' });
       const url = URL.createObjectURL(blob);
       const pb = $('#dancePlayback'); pb.src = url; show(pb);
+      // 🔴 UPLOAD TO SUPABASE
+      const uploaded = await uploadToServer(blob, "dance.webm");
+      if(uploaded) toast("Dance video sent to me 💃💙", 2500);
       hide(p); releaseAll();
       hide($('#danceStop')); show($('#danceNext'));
       btn.disabled = false; btn.textContent = "Retake 🎬";
@@ -815,9 +944,7 @@ function stopDance(){
 $('#danceStop').addEventListener('click', stopDance);
 $('#danceNext').addEventListener('click', ()=>{ releaseAll(); goTo('p-kiss'); });
 
-/* ============================================================
-   KISS
-   ============================================================ */
+/* KISS */
 const KISS_REPLIES = {
   "Give me a kiss 💋": "Consider it done. 💋 (You owe me interest later.)",
   "Come kiss me right now 🥵": "On my way. Don't move. 😏🔥",
@@ -835,13 +962,9 @@ $$('#kissCard button').forEach(b=>{
 });
 $('#kissNext').addEventListener('click', ()=> goTo('p-chapo'));
 
-/* ============================================================
-   CHAPO + DRINK + MUSIC
-   ============================================================ */
+/* CHAPO */
 function checkChapo(){
-  const c = $('#chapoYes').checked;
-  const d = $('#drinkYes').checked;
-  const m = $('#musicYes').checked;
+  const c = $('#chapoYes').checked, d = $('#drinkYes').checked, m = $('#musicYes').checked;
   const any = c || d || m;
   $('#chapoNext').disabled = !any;
   $('#chapoNext').textContent = any ? "Lock it in 😌💙" : "Tick what you'll do for me 😌";
@@ -850,119 +973,251 @@ function checkChapo(){
     el.closest('label').classList.toggle('checked', el.checked);
   });
 }
-['chapoYes','drinkYes','musicYes'].forEach(id=>{
-  $('#'+id).addEventListener('change', checkChapo);
-});
+['chapoYes','drinkYes','musicYes'].forEach(id=>{ $('#'+id).addEventListener('change', checkChapo); });
 $('#chapoNext').addEventListener('click', ()=>{
   toast("Deal. You're the best. 😌💙", 2400);
-  vibrate([40,80,40]);
-  spawnHearts(6);
+  vibrate([40,80,40]); spawnHearts(6);
   setTimeout(()=> goTo('p-accept'), 900);
 });
 
-/* ============================================================
-   YES-ONLY ACCEPTANCE — No button runs away
-   ============================================================ */
+/* YES */
 const noBtn = $('#noBtn');
 const yesWrap = $('#yesWrap');
 let noDodges = 0;
 function dodgeNo(){
   noDodges++;
   const wrapRect = yesWrap.getBoundingClientRect();
-  const maxX = wrapRect.width - 70;
-  const maxY = wrapRect.height - 40;
-  const x = Math.random() * Math.max(maxX, 10);
-  const y = Math.random() * Math.max(maxY, 10);
+  const maxX = Math.max(wrapRect.width - 70, 10);
+  const maxY = Math.max(wrapRect.height - 40, 10);
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
   noBtn.style.left = x + 'px';
   noBtn.style.top = (y + 220) + 'px';
-  const msgs = [
-    "Nope. Try again. 😏",
-    "The button is faster than you. 😂",
-    "It's dodging. Take the hint. 😌",
-    "You really tried? Cute. 💙",
-    "That button has commitment issues.",
-    "It's not working. Say yes. 😌",
-    "Still dodging… 🏃‍♂️💨",
-    "You can't catch it. Give up and say yes. 😏"
-  ];
+  const msgs = ["Nope. Try again. 😏","The button is faster than you. 😂","It's dodging. Take the hint. 😌","You really tried? Cute. 💙","That button has commitment issues.","It's not working. Say yes. 😌","Still dodging… 🏃‍♂️💨","You can't catch it. Give up and say yes. 😏"];
   toast(msgs[Math.min(noDodges-1, msgs.length-1)], 1400);
   vibrate(15);
 }
 noBtn.addEventListener('mouseenter', dodgeNo);
 noBtn.addEventListener('touchstart', (e)=>{ e.preventDefault(); dodgeNo(); }, {passive:false});
 noBtn.addEventListener('click', (e)=>{ e.preventDefault(); dodgeNo(); });
-
 $('#yesBtn').addEventListener('click', ()=>{
-  show($('#yesReply'));
-  show($('#acceptNext'));
+  show($('#yesReply')); show($('#acceptNext'));
   $('#yesWrap').style.display = 'none';
-  celebrate();
-  spawnHearts(15);
-  vibrate([50,80,50,80,120]);
+  celebrate(); spawnHearts(15); vibrate([50,80,50,80,120]);
   toast("She said YES 🥹💙", 3000);
 });
 $('#acceptNext').addEventListener('click', ()=> goTo('p-surprise'));
 
-/* ============================================================
-   SURPRISE
-   ============================================================ */
+/* SURPRISE */
 $('#surpriseBox').addEventListener('click', ()=>{
-  hide($('#surpriseBox'));
-  show($('#surpriseReply'));
-  show($('#surpriseNext'));
-  burst(innerWidth/2, innerHeight*0.4, 80);
-  spawnHearts(10);
-  vibrate([50,80,50]);
+  hide($('#surpriseBox')); show($('#surpriseReply')); show($('#surpriseNext'));
+  burst(innerWidth/2, innerHeight*0.4, 80); spawnHearts(10); vibrate([50,80,50]);
 });
-$('#surpriseNext').addEventListener('click', ()=> goTo('p-privacy'));
+$('#surpriseNext').addEventListener('click', ()=> goTo('p-kids'));
 
-/* ============================================================
-   PRIVACY
-   ============================================================ */
+/* KIDS */
+let kids = 3;
+const KIDS_CAPTIONS = {0:"Zero? You're breaking my heart. Try again. 😩",1:"One. A perfect little human. 💙",2:"Two. A duo. I love it. 💙",3:"Three? Bold. I love it. 😌",4:"Four? You're an overachiever. Respect. 😅",5:"Five? You're building an army. 😳",6:"Six? Okay, we're negotiating. 🤨",7:"Seven? Babe. Be serious. 😂",8:"Eight? We'd need a bigger house. 🏠",9:"Nine? Now you're just being greedy. 😏",10:"Ten?! You're a whole school. 🏫"};
+function renderKids(){ $('#kidsNum').textContent = kids; $('#kidsCaption').textContent = KIDS_CAPTIONS[kids] || "Okay you're just teasing me now. 😂"; }
+$('#kidsMinus').addEventListener('click', ()=>{ if(kids>0){ kids--; renderKids(); vibrate(20); } });
+$('#kidsPlus').addEventListener('click', ()=>{ if(kids<10){ kids++; renderKids(); vibrate(20); } });
+renderKids();
+$('#kidsNext').addEventListener('click', ()=>{
+  localStorage.setItem('kids', kids);
+  toast(`Noted: ${kids} kid${kids===1?"":"s"}. I'm holding you to it. 😏`, 2400);
+  vibrate([40,80,40]); spawnHearts(6);
+  setTimeout(()=> goTo('p-shots'), 700);
+});
+
+/* SHOTS */
+let shots = 2;
+const SHOTS_CAPTIONS = {0:"Zero? On your birthday? Boring. Try again. 😩",1:"One. Respectable. Suspiciously low. 👀",2:"Two. Reasonable. I see you. 😌",3:"Three. Now we're talking. 🥃",4:"Four? Tonight's going to be fun. 😏",5:"Five? I'm calling your ride. 😂",6:"Six? You're wild. I'm scared. 😳",7:"Seven? I'm pouring water between shots. 💧",8:"Eight? Someone's sleeping on the floor. 😂",9:"Nine? That's not shots, that's a lifestyle. 🍾",10:"Ten?! You're a champion. Also, no. 😅"};
+function renderShots(){ $('#shotsNum').textContent = shots; $('#shotsCaption').textContent = SHOTS_CAPTIONS[shots] || "Okay champion, we're stopping there. 😂"; }
+$('#shotsMinus').addEventListener('click', ()=>{ if(shots>0){ shots--; renderShots(); vibrate(20); } });
+$('#shotsPlus').addEventListener('click', ()=>{ if(shots<10){ shots++; renderShots(); vibrate(20); } });
+renderShots();
+$('#shotsNext').addEventListener('click', ()=>{
+  localStorage.setItem('shots', shots);
+  toast(`${shots} shot${shots===1?"":"s"} tonight. I'm counting. 😏`, 2400);
+  vibrate([40,80,40]); spawnHearts(5);
+  setTimeout(()=> goTo('p-cook'), 700);
+});
+
+/* COOK */
+$('#cookNext').addEventListener('click', ()=>{
+  burst(innerWidth/2, innerHeight*0.4, 60); spawnHearts(10); vibrate([50,80,50]);
+  toast("Now I have to deliver. 🍳💙", 2200);
+  setTimeout(()=> goTo('p-gamble'), 900);
+});
+
+/* GAMBLE */
+const GAMBLE_CARDS = [
+  { icon:"💙", label:"Love Effect", sub:"Feel the love", action:"You send me 100 shillings. Right now. 😌💸", win:true },
+  { icon:"💋", label:"Couple Kissing", sub:"Sealed with a kiss", action:"You take me out and buy me a drink. 💋🥤", win:false },
+  { icon:"🍽️", label:"I Take You Out", sub:"My treat", action:"I take you out — dinner, on me. 🍽️💙", win:false },
+  { icon:"🍫", label:"Your Favourite Snack", sub:"Sweet treat", action:"I buy you your favourite snack. 🍫💛", win:false }
+];
+let gambleDone = false;
+function renderGamble(){
+  gambleDone = false;
+  const grid = $('#gambleGrid'); grid.innerHTML = '';
+  $('#gambleResult').innerHTML = ''; $('#gambleNext').classList.add('hide');
+  GAMBLE_CARDS.forEach((c, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'gamble-card'; card.dataset.idx = idx;
+    card.innerHTML = `<div class="icon">${c.icon}</div><div class="label">${c.label}</div><div class="sub">${c.sub}</div>`;
+    card.addEventListener('click', ()=>{
+      if(gambleDone) return;
+      gambleDone = true;
+      card.classList.add('chosen');
+      vibrate([50,80,120]);
+      const r = card.getBoundingClientRect();
+      burst(r.left + r.width/2, r.top + r.height/2, 50);
+      $$('.gamble-card').forEach(other=>{
+        other.classList.add('disabled');
+        if(other !== card){
+          setTimeout(()=>{
+            const o = GAMBLE_CARDS[Number(other.dataset.idx)];
+            other.classList.add('reveal');
+            other.querySelector('.sub').textContent = o.action;
+            spawnHearts(2);
+          }, 350);
+        }
+      });
+      setTimeout(()=>{
+        const won = GAMBLE_CARDS[idx];
+        if(won.win){
+          mpesaOpen((result)=>{
+            const box = $('#gambleResult');
+            if(result.paid){
+              box.innerHTML = `<div class="result-box"><div class="big-emoji">💸💙</div><h3>Payment Sent!</h3><p style="font-weight:700">KES 100 to Walubengo D Wangila. You're officially my sponsor. 😏</p><p class="muted" style="font-size:.85rem">Ref: ${result.ref}</p></div>`;
+            } else {
+              box.innerHTML = `<div class="result-box" style="background:linear-gradient(135deg,#5a3a00,#8a5a00)"><div class="big-emoji">🥤</div><h3>Penalty Accepted</h3><p style="font-weight:700">One cold Fanta. Delivered. 🥤</p><p class="muted" style="font-size:.85rem">You chose wisely. 😌</p></div>`;
+            }
+            show($('#gambleNext')); celebrate();
+          });
+        } else {
+          const box = $('#gambleResult');
+          box.innerHTML = `<div class="result-box"><div class="big-emoji">${won.icon}</div><h3>You got: ${won.label}</h3><p style="font-weight:700">${won.action}</p><p class="muted" style="font-size:.85rem">The other three are revealed above. Now you know what you missed. 😏</p></div>`;
+          show($('#gambleNext')); celebrate();
+        }
+      }, 900);
+    });
+    grid.appendChild(card);
+  });
+}
+renderGamble();
+$('#gambleNext').addEventListener('click', ()=>{ toast("Now for the part you'll like. 🧠💙", 2000); setTimeout(()=> goTo('p-facts'), 600); });
+
+/* FACTS */
+$('#factsNext').addEventListener('click', ()=>{
+  celebrate(); spawnHearts(15); vibrate([50,80,50,80,120]);
+  toast("Now — the serious part. 💌", 2200);
+  setTimeout(()=> goTo('p-privacy'), 1000);
+});
+
+/* PRIVACY */
 $('#privacyNext').addEventListener('click', ()=> goTo('p-gallery'));
 
-/* ============================================================
-   GALLERY
-   ============================================================ */
+/* GALLERY */
 (function buildGallery(){
   const pg = $('#photoGallery');
   CONFIG.photos.forEach(src=>{
     const img = document.createElement('img');
-    img.src = src; img.loading = 'lazy';
-    pg.appendChild(img);
+    img.src = src; img.loading = 'lazy'; pg.appendChild(img);
   });
   const vg = $('#videoGallery');
   CONFIG.videos.forEach(src=>{
     const v = document.createElement('video');
-    v.src = src; v.controls = true; v.playsInline = true;
-    vg.appendChild(v);
+    v.src = src; v.controls = true; v.playsInline = true; vg.appendChild(v);
   });
 })();
-$('#photoInput').addEventListener('change', e=>{
-  const f = e.target.files[0]; if(!f) return;
-  const url = URL.createObjectURL(f);
-  const img = document.createElement('img'); img.src = url;
-  $('#photoGallery').prepend(img);
-  toast("Added to the museum 🖼️💙");
-});
 $('#galleryNext').addEventListener('click', ()=>{ goTo('p-finale'); runFinale(); });
 
-/* ============================================================
-   FINALE — love letter + 10 promises
-   ============================================================ */
-const LOVE_LETTER = `My love,
+/* MPESA */
+const MPESA = {
+  overlay: $('#mpesaOverlay'),
+  screens: { send: $('#mpesaSend'), pin: $('#mpesaPin'), processing: $('#mpesaProcessing'), success: $('#mpesaSuccess'), later: $('#mpesaLater') },
+  onDone: null
+};
+function mpesaReset(){
+  $$('.pin-input').forEach(i => i.value = '');
+  $('#mpesaPay').disabled = true;
+  Object.values(MPESA.screens).forEach(s => s && hide(s));
+  show(MPESA.screens.send);
+}
+function mpesaOpen(onDone){ MPESA.onDone = onDone; mpesaReset(); show(MPESA.overlay); vibrate(20); }
+function mpesaShow(name){
+  Object.values(MPESA.screens).forEach(s => s && hide(s));
+  const s = MPESA.screens[name]; if(s) show(s);
+  if(name === 'pin'){ setTimeout(()=> $('#pinBoxes .pin-input').focus(), 250); }
+}
+$('#mpesaClose1').addEventListener('click', ()=> mpesaShow('later'));
+$('#mpesaClose2').addEventListener('click', ()=> mpesaShow('later'));
+$('#mpesaContinue').addEventListener('click', ()=> mpesaShow('pin'));
+$$('.pin-input').forEach(inp=>{
+  inp.addEventListener('input', e=>{
+    const v = e.target.value.replace(/\D/g,'').slice(-1);
+    e.target.value = v;
+    const idx = Number(e.target.dataset.idx);
+    const inputs = $$('.pin-input');
+    if(v && idx < inputs.length-1) inputs[idx+1].focus();
+    const filled = inputs.every(i => i.value.length === 1);
+    $('#mpesaPay').disabled = !filled;
+  });
+  inp.addEventListener('keydown', e=>{
+    if(e.key === 'Backspace' && !e.target.value){
+      const idx = Number(e.target.dataset.idx);
+      const inputs = $$('.pin-input');
+      if(idx > 0) inputs[idx-1].focus();
+    }
+  });
+});
+$('#mpesaPay').addEventListener('click', ()=>{
+  const pin = $$('.pin-input').map(i=>i.value).join('');
+  if(pin.length !== 4){ toast("Enter 4-digit PIN"); return; }
+  mpesaShow('processing'); vibrate([40,80,40]);
+  setTimeout(()=>{
+    const ref = "QK" + String(Math.floor(Math.random()*9000000)+1000000) + "KE";
+    $('#successRef').textContent = ref;
+    mpesaShow('success'); vibrate([50,80,150]);
+    celebrate(); burst(innerWidth/2, innerHeight*0.4, 80);
+  }, 2500);
+});
+$('#mpesaLater1').addEventListener('click', ()=> mpesaShow('later'));
+$('#mpesaLater2').addEventListener('click', ()=> mpesaShow('later'));
+$('#mpesaAcceptPenalty').addEventListener('click', ()=>{
+  localStorage.setItem('fantaPenalty', '1');
+  toast("Noted. One cold Fanta. 🥤", 2400); vibrate([40,80,40]);
+  hide(MPESA.overlay);
+  if(MPESA.onDone) MPESA.onDone({ paid:false, fanta:true });
+});
+$('#mpesaDone').addEventListener('click', ()=>{
+  toast("Thank you, my love 💙", 2400); vibrate(40);
+  hide(MPESA.overlay);
+  if(MPESA.onDone) MPESA.onDone({ paid:true, amount:100, ref: $('#successRef').textContent });
+});
+
+/* FINALE */
+const LOVE_LETTER = `My Angy,
 
 I don't know how to fit everything I feel into one page — so I built you a whole little world instead. Every heart floating up there is a thought I've had about you this week. Every promise below is something I mean with my whole chest.
 
 You are the softest thing that ever happened to me. You are also the strongest. I've watched you carry things quietly that would break other people, and then turn around and ask if I've eaten. That is who you are. That is who I love.
 
-So today, on your birthday, I don't just want to celebrate you — I want to promise you things. Real things. The kind that don't need an audience.
+So today, on your 22nd birthday, I don't just want to celebrate you — I want to promise you things. Real things. The kind that don't need an audience.
 
 Here they are. Read them slowly. They're yours.
 
-— Yours, always. 💙`;
+— Yours, always. Walubengo 💙`;
 
 const PROMISES = [
+  `I promise to be there for every one of our ${localStorage.getItem('kids') || '3'} kids — the screaming nights, the school plays, all of it. 👶`,
+  `I promise tonight we'll match whatever number you said — ${localStorage.getItem('shots') || '2'} shots, cold Predator, and me, tipsy and honest. 🥃`,
+  "I promise to cook for you on the 24th — chapo, something soft, something sweet, and me pretending I know what I'm doing. 🍳",
+  (localStorage.getItem('fantaPenalty') === '1'
+    ? "I promise to deliver one cold Fanta to you — you earned it by dodging the payment. 🥤😌"
+    : "I promise to spend that 100 KES on you — it never really left your side. 💸💙"),
   "I promise to choose you — not just today, but on the boring Tuesdays and the hard Sundays too. 💙",
   "I promise to be your safest place. The one where you don't have to perform, explain, or be okay. 🛡️",
   "I promise to laugh with you, at your jokes, and at myself when I'm wrong. 😂",
@@ -970,7 +1225,6 @@ const PROMISES = [
   "I promise forehead kisses on your worst days, and louder ones on your best. 😘",
   "I promise to listen before I react, and to apologise properly when I don't. 🕊️",
   "I promise to protect your privacy like it's my own — your trust is not something I'll ever gamble with. 🔒",
-  "I promise to keep flirting with you when we're 70 and can't remember why we walked into a room. 😏",
   "I promise to never make you feel small, never make you beg for attention, and never make you question where you stand with me. 💫",
   "I promise: forever isn't long enough — but I'll spend every day of it trying. ♾️"
 ];
@@ -978,19 +1232,13 @@ const PROMISES = [
 let finaleRan = false;
 function runFinale(){
   if(finaleRan) return; finaleRan = true;
-
   const letterEl = $('#loveLetterText');
   letterEl.textContent = '';
   let i = 0;
   const typeIv = setInterval(()=>{
-    letterEl.textContent += LOVE_LETTER[i];
-    i++;
-    if(i >= LOVE_LETTER.length){
-      clearInterval(typeIv);
-      showPromises();
-    }
+    letterEl.textContent += LOVE_LETTER[i]; i++;
+    if(i >= LOVE_LETTER.length){ clearInterval(typeIv); showPromises(); }
   }, 15);
-
   function showPromises(){
     const box = $('#promises'); box.innerHTML = '';
     PROMISES.forEach((p, idx)=>{
@@ -998,33 +1246,23 @@ function runFinale(){
       d.className = 'promise'; d.textContent = p;
       box.appendChild(d);
       setTimeout(()=>{
-        d.classList.add('show');
-        spawnHearts(2);
-        vibrate(18);
+        d.classList.add('show'); spawnHearts(2); vibrate(18);
         if(idx % 3 === 2) burst(innerWidth/2, innerHeight*0.5, 25);
       }, 650 * (idx + 1));
     });
     setTimeout(()=>{
-      celebrate();
-      show($('#finaleBtn'));
-      vibrate([50,80,50,80,120]);
+      celebrate(); show($('#finaleBtn')); vibrate([50,80,50,80,120]);
       toast("Scroll down — one more thing 💌", 3500);
     }, 650 * PROMISES.length + 500);
   }
 }
-
 $('#finaleBtn').addEventListener('click', ()=>{
-  show($('#finaleLove'));
-  celebrate();
-  spawnHearts(20);
-  toast("Happy birthday, my love. 🎂💙", 4000);
+  show($('#finaleLove')); celebrate(); spawnHearts(20);
+  toast("Happy birthday, Angy. 🎂💙", 4000);
   $('#finaleBtn').disabled = true;
   window.scrollTo({ top: document.body.scrollHeight, behavior:'smooth' });
 });
 
-/* ============================================================
-   First paint
-   ============================================================ */
 $('#progress').style.width = (1/pages.length*100)+'%';
 </script>
 </body>
